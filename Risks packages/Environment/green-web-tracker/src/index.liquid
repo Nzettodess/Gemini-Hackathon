@@ -1,0 +1,61 @@
+---
+layout: "layouts/base.liquid"
+description: "Tracking the progress of the internet towards 100% fossil free hosting. Updated every two weeks."
+---
+<section id="intro">
+  <div class="text">
+    <h1><span class="beta">Green Web Tracker</span></h1>
+    <p>Tracking the progress of the internet towards 100% fossil free hosting. Updated every two weeks.</p>
+    <p>View one of the <a href="#indexes">public indexes below</a>, or read more <a href="/about">about this project</a>.</p>
+  </div>
+  {% capture uniqueDomains %}
+    {% getUniqueDomains %}
+  {% endcapture %}
+  {% capture totalGreenCount %}
+    {% getGreenCount %}
+  {% endcapture %}
+  {% capture lastUpdated %}{% getLastChecked %}{% endcapture %}
+  {% assign greenPercentage = totalGreenCount | divided_by: uniqueDomains | times: 100 %}
+  <aside style="--green-percentage: {{ greenPercentage }}%; --grey-percentage: {{ 100 | minus: greenPercentage }}%;">
+    <p>Checking {{ uniqueDomains }} unique domains, across {% getIndexCount %} indexes.</p>
+    <p>Currently {{ totalGreenCount }} domains ({{ greenPercentage | floor }}%) found with green hosting.
+    </p>
+    <small>Last updated:
+      <time datetime="{{lastUpdated}}">{{ lastUpdated | date_to_long_string }}</time>
+    </small>
+  </aside>
+</section>
+
+{% comment %} <hr> {% endcomment %}
+
+<section id="indexes">
+  <h2>Public Indexes</h2>
+  <p>A set of public indexes covering various types of websites. These public lists are sourced from open datasets, and submitted by members of the community. Get involved and
+    <a href="/submit">submit your own!</a>
+  </p>
+  <ul class="index-list">
+    {% for index in indexes %}
+      {% assign totalSize = index[1].sites | size %}
+      {% assign greenSize = index[1].sites | greenHostsCount: index[0] %}
+      {% assign greenPercentage = greenSize | divided_by: totalSize | times: 100 %}
+      <li style="--green-percentage: {{ greenPercentage }}%; --grey-percentage: {{ 100 | minus: greenPercentage }}%;">
+        <p class="title">
+          <a href="/index/{{ index[0] | slug }}">{{ index[1].name }}</a>
+        </p>
+        <p>{{ index[1].description }}</p>
+        <div class="stats">
+          <small>Total domains: {{ totalSize }}</small>
+          <small>Green hosted: {{ greenSize }} ({{ greenPercentage | floor }}%)</small>
+        </div>
+      </li>
+    {% endfor %}
+    <li style="--green-percentage:50%; --grey-percentage: 50%;" class="submit-your-own">
+      <p class="title">
+        <a href="/submit">Submit your own index</a>
+      </p>
+      <p>Help us track the progress of the internet towards 100% fossil free hosting.</p>
+      <div class="stats">
+        <small>Get involved</small>
+    </li>
+  </ul>
+</section>

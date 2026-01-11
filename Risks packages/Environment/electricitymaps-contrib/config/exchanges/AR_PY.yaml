@@ -1,0 +1,6 @@
+lonlat:
+  - -59.408
+  - -24.346
+parsers:
+  exchange: CAMMESA.fetch_exchange
+rotation: 45

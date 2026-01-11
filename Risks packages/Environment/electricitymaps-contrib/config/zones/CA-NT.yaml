@@ -1,0 +1,13 @@
+bounding_box:
+  - - -136.94538692906352
+    - 59.5000589062935
+  - - -101.48658586274732
+    - 79.26634349200017
+country: CA
+country_name: Canada
+currency: CAD
+has_day_ahead_price_license: False
+hide_day_ahead_price: False
+region: Americas
+timezone: America/Yellowknife
+zone_name: Northwest Territories

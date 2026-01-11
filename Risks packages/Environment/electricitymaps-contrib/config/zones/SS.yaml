@@ -1,0 +1,31 @@
+capacity:
+  solar:
+    - datetime: '2017-01-01'
+      source: Ember, Yearly electricity data
+      value: 0.0
+    - datetime: '2023-01-01'
+      source: Ember, Yearly electricity data
+      value: 20.0
+  unknown:
+    - datetime: '2017-01-01'
+      source: Ember, Yearly electricity data
+      value: 130.0
+    - datetime: '2019-01-01'
+      source: Ember, Yearly electricity data
+      value: 160.0
+    - datetime: '2021-01-01'
+      source: Ember, Yearly electricity data
+      value: 170.0
+    - datetime: '2023-01-01'
+      source: Ember, Yearly electricity data
+      value: 200.0
+country: SS
+country_name: South Sudan
+currency: SSP
+has_day_ahead_price_license: False
+hide_day_ahead_price: False
+parsers:
+  productionCapacity: EMBER.fetch_production_capacity
+region: Africa
+timezone: Africa/Juba
+zone_name: South Sudan

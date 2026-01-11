@@ -1,0 +1,2 @@
+Tool: AI Transparency Labels
+URL: https://openprompts.ai/label/

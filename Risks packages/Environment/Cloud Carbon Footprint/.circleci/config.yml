@@ -1,0 +1,184 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.0.0
+  gcr: circleci/gcp-gcr@0.8.0
+  gcp-cli: circleci/gcp-cli@1.8.4
+jobs:
+  lint-test:
+    working_directory: ~/cloud-carbon-footprint
+    docker:
+      - image: circleci/node:current
+    environment:
+      MAJOR_REVISION: 0
+      MINOR_REVISION: 0
+      GIT_HASH: <<pipeline.git.revision>>
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/cloud-carbon-footprint
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: lint
+          command: 'yarn lint'
+      - run:
+          name: test
+          command: 'yarn test'
+      - persist_to_workspace:
+          root: ~/cloud-carbon-footprint
+          paths:
+            - node_modules/*
+            - packages/client/node_modules/*
+            - packages/server/node_modules/*
+  build-client:
+    description: Build Client
+    working_directory: ~/cloud-carbon-footprint
+    machine:
+      image: ubuntu-1604:202007-01
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/cloud-carbon-footprint
+      - run:
+          name: Install Yarn
+          command: npm i -g yarn
+      - run:
+          name: build
+          command: |
+            cd packages/client
+            yarn build
+      - persist_to_workspace:
+          root: ~/cloud-carbon-footprint
+          paths:
+            - packages/client/build/*
+            - packages/client/.env
+  build-server:
+    description: Build Server
+    working_directory: ~/cloud-carbon-footprint
+    machine:
+      image: ubuntu-1604:202007-01
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/cloud-carbon-footprint
+      - run:
+          name: Install Yarn
+          command: npm i -g yarn
+      - run:
+          name: build
+          command: |
+            cd packages/server
+            yarn build
+            ./create_server_env_file.sh
+      - persist_to_workspace:
+          root: ~/cloud-carbon-footprint
+          paths:
+            - packages/server/dist/*
+            - packages/server/.env
+  staging-deploy:
+    description: Deploy app to gcp staging
+    working_directory: ~/cloud-carbon-footprint
+    docker:
+      - image: hashicorp/terraform:0.12.28
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/cloud-carbon-footprint
+      - run:
+          name: staging-deploy
+          command: |
+            apk add --update python3 py-crcmod bash libc6-compat curl
+            export PATH=$PATH:/root/google-cloud-sdk/bin
+            curl -sSL https://sdk.cloud.google.com > /tmp/gcloud-install && bash /tmp/gcloud-install --disable-prompts --install-dir=/root
+
+            # Create client env file
+            cd packages/client
+            ./create_client_stage_env_file.sh
+            cd ../..
+
+            # Store service account
+            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+
+            # Initialize gcloud CLI
+            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+
+            gcloud --quiet config set project $GOOGLE_PROJECT_ID
+
+            gcloud --quiet config set compute/zone $GOOGLE_COMPUTE_ZONE
+
+            cd appengine
+            ./deploy-staging.sh
+            cd ..
+  prod-deploy:
+    description: Deploy app to gcp prod
+    working_directory: ~/cloud-carbon-footprint
+    docker:
+      - image: hashicorp/terraform:0.12.28
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/cloud-carbon-footprint
+      - run:
+          name: prod-deploy
+          command: |
+            apk add --update python3 py-crcmod bash libc6-compat curl
+            export PATH=$PATH:/root/google-cloud-sdk/bin
+            curl -sSL https://sdk.cloud.google.com > /tmp/gcloud-install && bash /tmp/gcloud-install --disable-prompts --install-dir=/root
+
+            # Create client env file
+            cd packages/client
+            ./create_client_prod_env_file.sh
+            cd ../..
+
+            # Store service account
+            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+
+            # Initialize gcloud CLI
+            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+
+            gcloud --quiet config set project $GOOGLE_PROJECT_ID
+
+            gcloud --quiet config set compute/zone $GOOGLE_COMPUTE_ZONE
+
+            cd appengine
+            ./deploy-production.sh
+            cd ..
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - lint-test
+      - build-client:
+          requires:
+            - lint-test
+      - build-server:
+          requires:
+            - lint-test
+      - staging-deploy:
+          filters:
+            branches:
+              only: [trunk]
+          requires:
+            - build-client
+            - build-server
+      - hold:
+          type: approval
+          requires:
+            - staging-deploy
+      - prod-deploy:
+          filters:
+            branches:
+              only: trunk
+          requires:
+            - hold

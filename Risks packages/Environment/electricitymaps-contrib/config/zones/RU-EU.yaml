@@ -1,0 +1,12 @@
+bounding_box:
+  - - 35.357377557328505
+    - 58.708375963180174
+  - - 69.53394616000008
+    - 82.35871002800013
+country: RU
+country_name: Russia
+has_day_ahead_price_license: False
+hide_day_ahead_price: False
+region: Europe
+timezone: Europe/Moscow
+zone_name: Arctic

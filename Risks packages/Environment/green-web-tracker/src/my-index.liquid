@@ -1,0 +1,266 @@
+---
+layout: "layouts/base.liquid"
+title: "My Index"
+description: "Create your own, private index of up-to ten (10) websites that you'd like to track over time."
+---
+<section id="intro">
+  <div class="text">
+    <h1>Green Web Tracker - Private Index</h1>
+    <p>Use this page to create your own, private index of up-to ten (10) websites that you'd like to track over time. Read about
+      <a href="#explainer">how this works</a>
+      below.</p>
+  </div>
+</section>
+
+<section id="domain">
+  <h2>Domains</h2>
+  <p>Use the form below to create your own index of up-to ten (10) websites that you'd like to track. You can add or remove websites from your index at any time.</p>
+  <p>Results are stored locally in your browser.</p>
+  <form id="index-form">
+    <label for="index-sites-1">Domain 1
+      <input
+        type="text"
+        id="index-sites-1"
+        name="sites[]"
+        required>
+    </label>
+    <label for="index-sites-2">Domain 2
+      <input
+        type="text"
+        id="index-sites-2"
+        name="sites[]">
+    </label>
+    <label for="index-sites-3">Domain 3
+      <input
+        type="text"
+        id="index-sites-3"
+        name="sites[]">
+    </label>
+    <label for="index-sites-4">Domain 4
+      <input
+        type="text"
+        id="index-sites-4"
+        name="sites[]">
+    </label>
+    <label for="index-sites-5">Domain 5
+      <input
+        type="text"
+        id="index-sites-5"
+        name="sites[]">
+    </label>
+    <label for="index-sites-6">Domain 6
+      <input
+        type="text"
+        id="index-sites-6"
+        name="sites[]">
+    </label>
+    <label for="index-sites-7">Domain 7
+      <input
+        type="text"
+        id="index-sites-7"
+        name="sites[]">
+    </label>
+    <label for="index-sites-8">Domain 8
+      <input
+        type="text"
+        id="index-sites-8"
+        name="sites[]">
+    </label>
+    <label for="index-sites-9">Domain 9
+      <input
+        type="text"
+        id="index-sites-9"
+        name="sites[]">
+    </label>
+    <label for="index-sites-10">Domain 10
+      <input
+        type="text"
+        id="index-sites-10"
+        name="sites[]">
+    </label>
+    <button type="submit">Create Index</button>
+  </form>
+</section>
+
+<section id="results">
+  <h2>Results</h2>
+  <small>Last update:
+    <time id="last-update" datetime=""></time>
+  </small>
+
+  {% include 'partials/legend.liquid' %}
+  <div class="table-wrapper">
+    <table id="results-table">
+      <thead>
+        <tr>
+          <th>Domain</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>There are no results to display.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="explainer">
+  <h2>How does this work?</h2>
+  <details>
+    <summary>
+      Creating a private index
+    </summary>
+    <p>Use the form above to create your own index of up-to ten (10) websites that you'd like to track. You can add or remove websites from your index at any time. Once you've entered the domains you wish to track, press the "Create Index" button to run the first check of your index against the Green Web Foundation's Green Web Dataset.</p>
+  </details>
+  <details>
+    <summary>
+      Updating a private index
+    </summary>
+    <p>Once you've created your index, you can update it at any time by entering new domains and pressing the "Recheck Index" button. You can only update and recheck your index once every 24 hours.</p>
+  </details>
+  <details>
+    <summary>
+      The results
+    </summary>
+    <p>Results are stored locally in your browser and displayed in the table above when the page loads. If you clear your browser's storage, then the content of your index will be lost.</p>
+  </details>
+  <details>
+    <summary>Persisting, and sharing indexes</summary>
+    <p>Results are stored locally in your browser and cannot be shared. If you'd like to share the results of your index with others, you either
+      <a href="/submit">submit a public index</a>
+      or make a fork of this project's code to run your own tracker.</p>
+  </details>
+  <details>
+    <summary>
+      Do you have any questions about these results?
+    </summary>
+    <p>First, please
+      <a href="/about/#faq">read the FAQs</a>
+      on this website to see if your question hasn't been answered already.</p>
+    <p>If you still have questions then please contact us through the
+      <a href="https://www.thegreenwebfoundation.org/support-form/?wpf2192_9=Another%20subject">support form on our website</a>.</p>
+  </details>
+</section>
+
+<script type="module">
+  import { hosting } from 'https://esm.sh/@tgwf/co2'
+
+  const greenCheck = async (sites, timestamp) => {
+        const results = await hosting(sites, { verbose: true })
+        const previousData = loadFromLocalStorage()
+        saveToLocalStorage(results, previousData, timestamp)
+        lastUpdate.textContent = new Date(timestamp).toLocaleString()
+        lastUpdate.setAttribute('datetime', timestamp)
+        return results
+      }
+
+  const saveToLocalStorage = (result, previousData, timestamp) => {
+    const lastUpdated = timestamp;
+    const data = [      
+      {
+        timestamp,
+        result
+      }
+    ]
+    if (previousData) {
+      data.push(...previousData.data)
+    }
+    localStorage.setItem('gwf-my-index', JSON.stringify({lastUpdated ,data}))
+  }
+
+  const loadFromLocalStorage = () => {
+    const data = localStorage.getItem('gwf-my-index')
+    if (!data) return
+    return JSON.parse(data)
+  }
+
+  const existingData = loadFromLocalStorage()
+  const lastUpdate = document.getElementById('last-update')
+  // If there's existing data, populate the form with it
+  if (existingData) {
+    const timestamp = new Date().toISOString()
+    const form = document.getElementById('index-form')
+    const domains = Object.values(existingData.data[0].result).map(result => result.url)
+
+    for(let i = 0; i < 10; i++) {
+      const input = form.querySelector(`#index-sites-${i + 1}`)
+      if (input && domains[i]) {
+        input.value = domains[i]
+      } else {
+        break
+      }
+    }
+
+    lastUpdate.textContent = new Date(existingData.lastUpdated).toLocaleString()
+    lastUpdate.setAttribute('datetime', existingData.lastUpdated)
+
+    const resultsTable = document.getElementById('results-table')
+    // Add cells to the table header for each check that's been run
+    const headerRow = resultsTable.querySelector('thead tr')
+    Object.values(existingData.data).forEach((result, index) => {
+      const cell = document.createElement('th')
+      cell.textContent = new Date(result.timestamp).toLocaleDateString(undefined, {
+      year: '2-digit',
+      month: 'short',
+      day: 'numeric'
+      })
+      headerRow.appendChild(cell)
+    })
+
+    // Add rows to the table for each domain
+    const tbody = resultsTable.querySelector('tbody')
+    // First clear any existing rows
+    tbody.innerHTML = ''
+
+    // Get a list of all the unique domains from each check
+    const resultDomains = Object.values(existingData.data).reduce((acc, result) => {
+      return acc.concat(Object.keys(result.result))
+    }, []).filter((value, index, self) => self.indexOf(value) === index)
+
+    // For each domain, add a row to the table
+    resultDomains.forEach((domain, index) => {
+      const row = document.createElement('tr')
+      const cell = document.createElement('td')
+      cell.classList.add('domain')
+      cell.textContent = domain
+      row.appendChild(cell)
+      tbody.appendChild(row)
+      // Then loop through each check and add a cell to the row for each check
+      Object.values(existingData.data).forEach((result, index) => {
+        const cell = document.createElement('td')
+        const domainResult = result.result[domain]
+        if (domainResult) {
+          cell.textContent = domainResult.green ? '◯' : '〰'
+        } else {
+          cell.textContent = '⬚'
+        }
+        cell.setAttribute('data-green', domainResult ? domainResult.green : 'unknown')
+        row.appendChild(cell)
+      })
+    })
+
+    const btnSubmit = form.querySelector('button[type="submit"]')
+    btnSubmit.textContent = 'Recheck Index'
+  }
+
+  const form = document.getElementById('index-form')
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    const timestamp = new Date().toISOString()
+    // Check that the last update is at least 24 hours ago
+    const lastUpdated = new Date(lastUpdate.getAttribute('datetime'))
+    if (lastUpdated && (new Date() - lastUpdated) < 86400000) {
+      alert('You can only update your index once every 24 hours.')
+      return
+    }
+    const formData = new FormData(form)
+    const sites = Array.from(formData.getAll('sites[]'))
+      .filter(site => site.trim() !== '') // Remove empty entries
+
+      await greenCheck(sites, timestamp)
+
+      // reload the page to show the new results
+      location.reload()
+  })
+</script>

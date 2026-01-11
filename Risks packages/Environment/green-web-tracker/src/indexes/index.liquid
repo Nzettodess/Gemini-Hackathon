@@ -1,0 +1,96 @@
+---
+layout: "layouts/base.liquid"
+pagination:
+    data: "indexes"
+    size: 1
+    alias: "index"
+permalink: "/index/{{ index | slug }}/index.html"
+eleventyComputed:
+    title: "Index: {{ indexes[index].name }}"
+    description: "View the results of the {{ indexes[index].name }} index on the Green Web Tracker."
+---
+{% assign content = indexes[index] %}
+
+<h1>Index: {{ content.name }}</h1>
+<p>{{ content.description }}</p>
+<small class="index-info">
+  <div>
+    <b>Contributed by:</b>
+    {% for contrib in content.contributors %}
+        <a class="contributor" href="https://github.com/{{ contrib.github }}">
+        <img src="https://github.com/{{ contrib.github }}.png?size=60" alt="{{ contrib.name }} GitHub avatar" width="30" height="30">
+        {{ contrib.name }}
+        </a>
+    {% endfor %}
+  </div>
+  {% if content.sources.size > 0 %}
+    <div>
+      {% if content.sources.size > 1 %}
+        <b>Sources:</b>
+      {% else %}
+        <b>Source:</b>
+      {% endif %}
+      {% for source in content.sources %}
+        <a href="{{ source.url }}">{{ source.name }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div>
+    <b>Created:</b>
+    {{ content.created | date: "%e %b '%y" }}
+  </div>
+</small>
+<div>
+  <a href="https://github.com/thegreenwebfoundation/green-web-tracker/tree/main/src/_data/indexes/{{index}}.json">Edit this index</a>
+</div>
+
+<h2>Domains</h2>
+{% assign results = index | getIndexResults %}
+
+<p>This index has been checked {{ results | size }} times.</p>
+
+{% include 'partials/legend.liquid' %}
+
+<div class="table-wrapper">
+  <table class="index-results">
+    <thead>
+      <tr>
+        <th></th>
+        <th colspan="{{ results | size }}">Results</th>
+      </tr>
+      <tr>
+        <th>Domain</th>
+        {% for result in results %}
+          <th>{{ result.timestamp | date: "%e %b '%y" }}</th>
+        {% endfor %}
+    </thead>
+    <tbody>
+      {% assign uniqueDomains = results | uniqueResultDomains %}
+      {% for domain in uniqueDomains %}
+        <tr>
+          <td class="domain">
+            <a href="/domain/{{ domain | toHost | slug }}/">{{ domain }}</a>
+          </td>
+          {% for result in results %}
+            {% assign greenFlag = result | getGreenStatus: domain %}
+            {% capture greenHosted %}{% case greenFlag %}{% when true %}hosted green{% when false %}not hosted green{% else %}not checked{% endcase %}{% endcapture %}
+            <td data-green="{{ greenFlag }}" title="{{ domain }} is {{ greenHosted }} as of {{ result.timestamp | date: "%e %b '%y" }}">
+              {% include 'partials/greenFlag.liquid' %}
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<aside>
+  <h2>
+    Do you have any questions about this index?
+  </h2>
+  <p>First, please
+    <a href="/about/#faq">read the FAQs</a>
+    on this website to see if your question hasn't been answered already.</p>
+    <p>If you still have questions then please contact us through the
+      <a href="https://www.thegreenwebfoundation.org/support-form/?wpf2192_9=Another%20subject">support form on our website</a>.</p>
+</aside>

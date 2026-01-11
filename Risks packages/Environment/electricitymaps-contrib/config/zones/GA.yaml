@@ -1,0 +1,15 @@
+bounding_box:
+  - - 8.195886958869607
+    - -4.4367200613860405
+  - - 14.999144991449924
+    - 2.809956504477071
+country: GA
+country_name: Gabon
+currency: XAF
+has_day_ahead_price_license: False
+hide_day_ahead_price: False
+parsers:
+  productionCapacity: EMBER.fetch_production_capacity
+region: Africa
+timezone: Africa/Libreville
+zone_name: Gabon

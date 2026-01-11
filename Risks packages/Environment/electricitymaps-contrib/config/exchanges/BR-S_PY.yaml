@@ -1,0 +1,6 @@
+lonlat:
+  - -54.44926
+  - -24.749974
+parsers:
+  exchange: ONS.fetch_exchange
+rotation: 110

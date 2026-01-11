@@ -1,0 +1,35 @@
+capacity:
+  solar:
+    - datetime: '2017-01-01'
+      source: Ember, Yearly electricity data
+      value: 10.0
+    - datetime: '2021-01-01'
+      source: Ember, Yearly electricity data
+      value: 20.0
+  unknown:
+    - datetime: '2017-01-01'
+      source: Ember, Yearly electricity data
+      value: 140.0
+    - datetime: '2019-01-01'
+      source: Ember, Yearly electricity data
+      value: 130.0
+    - datetime: '2020-01-01'
+      source: Ember, Yearly electricity data
+      value: 140.0
+    - datetime: '2022-01-01'
+      source: Ember, Yearly electricity data
+      value: 170.0
+  wind:
+    - datetime: '2017-01-01'
+      source: Ember, Yearly electricity data
+      value: 30.0
+country: CV
+country_name: Cabo Verde
+currency: CVE
+has_day_ahead_price_license: False
+hide_day_ahead_price: False
+parsers:
+  productionCapacity: EMBER.fetch_production_capacity
+region: Africa
+timezone: Atlantic/Cape_Verde
+zone_name: Cabo Verde

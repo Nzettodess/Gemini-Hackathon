@@ -1,0 +1,6 @@
+lonlat:
+  - -94.608546
+  - 38.596152
+parsers:
+  exchange: US_SPP.fetch_exchange
+rotation: 90

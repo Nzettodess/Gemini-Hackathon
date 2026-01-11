@@ -1,0 +1,24 @@
+bounding_box:
+  - - 83.31609381672638
+    - 26.33196174127239
+  - - 84.17810344629932
+    - 29.2389869272311
+capacity:
+  biomass: 0
+  coal: 0
+  gas: 0
+  hydro: 1016
+  nuclear: 0
+  oil: 0
+  solar: 0.7804
+  wind: 0
+contributors:
+  - Subarna578
+country: NP
+country_name: Nepal
+currency: NPR
+has_day_ahead_price_license: False
+hide_day_ahead_price: False
+region: Asia
+timezone: Asia/Kathmandu
+zone_name: Nepal

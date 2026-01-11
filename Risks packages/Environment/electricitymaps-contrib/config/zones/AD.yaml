@@ -1,0 +1,16 @@
+bounding_box:
+  - - 0.9064563390001013
+    - 41.92867747000005
+  - - 2.2650907800001505
+    - 43.14936167400003
+contributors:
+  - Manu1400
+  - autipial
+country: AD
+country_name: Andorra
+currency: EUR
+has_day_ahead_price_license: False
+hide_day_ahead_price: False
+region: Europe
+timezone: Europe/Andorra
+zone_name: Andorra

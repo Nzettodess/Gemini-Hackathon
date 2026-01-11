@@ -1,0 +1,364 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmissionsBreakdownCard renders a select dropdown for the bar chart 1`] = `
+<div
+  className="MuiGrid-root makeStyles-cardHalf-17 MuiGrid-item"
+>
+  <div
+    className="MuiPaper-root MuiCard-root makeStyles-card-16 makeStyles-minHeight-18 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-22 makeStyles-contentContainer-20"
+    >
+      <div
+        className="MuiCardContent-root makeStyles-cardContent-21"
+      >
+        <div
+          className="makeStyles-topContainer-14"
+          id="emissionsBreakdownContainer"
+        >
+          <p
+            className="makeStyles-title-15"
+          >
+            Emissions Breakdown
+          </p>
+          <div
+            className="MuiFormControl-root"
+          >
+            <div
+              className="MuiInputBase-root MuiInputBase-formControl"
+              data-testid="select"
+              onClick={[Function]}
+            >
+              <div
+                aria-haspopup="listbox"
+                aria-labelledby="breakdown-selector"
+                className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input WithStyles(ForwardRef(InputBase))-input-23"
+                id="breakdown-selector"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                role="button"
+                tabIndex={0}
+              >
+                Region
+              </div>
+              <input
+                aria-hidden={true}
+                className="MuiSelect-nativeInput"
+                onAnimationStart={[Function]}
+                onChange={[Function]}
+                required={false}
+                tabIndex={-1}
+                value="region"
+              />
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          className="makeStyles-barChartContainer-24"
+        >
+          <div
+            style={
+              Object {
+                "alignSelf": "center",
+                "display": "flex",
+                "flexDirection": "column",
+                "padding": "10px 45px",
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "fontWeight": 500,
+                  "justifyContent": "space-between",
+                  "paddingBottom": "12px",
+                }
+              }
+            >
+              <div>
+                Low carbon intensity
+              </div>
+              <div>
+                High carbon intensity
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "justifyContent": "space-between",
+                  "width": "100%",
+                }
+              }
+            >
+              <div
+                className="t-dot"
+                data-testid="timeline-dot"
+                style={
+                  Object {
+                    "backgroundColor": "#73B500",
+                    "borderRadius": "8px",
+                    "height": "15px",
+                    "width": "15px",
+                  }
+                }
+              />
+              <div
+                className="t-bar"
+                style={
+                  Object {
+                    "backgroundColor": "#aaaaaa",
+                    "flexGrow": 2,
+                    "height": "1px",
+                  }
+                }
+              />
+              <div
+                className="t-dot"
+                data-testid="timeline-dot"
+                style={
+                  Object {
+                    "backgroundColor": "#00791E",
+                    "borderRadius": "8px",
+                    "height": "15px",
+                    "width": "15px",
+                  }
+                }
+              />
+              <div
+                className="t-bar"
+                style={
+                  Object {
+                    "backgroundColor": "#aaaaaa",
+                    "flexGrow": 2,
+                    "height": "1px",
+                  }
+                }
+              />
+              <div
+                className="t-dot"
+                data-testid="timeline-dot"
+                style={
+                  Object {
+                    "backgroundColor": "#D99200",
+                    "borderRadius": "8px",
+                    "height": "15px",
+                    "width": "15px",
+                  }
+                }
+              />
+              <div
+                className="t-bar"
+                style={
+                  Object {
+                    "backgroundColor": "#aaaaaa",
+                    "flexGrow": 2,
+                    "height": "1px",
+                  }
+                }
+              />
+              <div
+                className="t-dot"
+                data-testid="timeline-dot"
+                style={
+                  Object {
+                    "backgroundColor": "#DF5200",
+                    "borderRadius": "8px",
+                    "height": "15px",
+                    "width": "15px",
+                  }
+                }
+              />
+              <div
+                className="t-bar"
+                style={
+                  Object {
+                    "backgroundColor": "#aaaaaa",
+                    "flexGrow": 2,
+                    "height": "1px",
+                  }
+                }
+              />
+              <div
+                className="t-dot"
+                data-testid="timeline-dot"
+                style={
+                  Object {
+                    "backgroundColor": "#790000",
+                    "borderRadius": "8px",
+                    "height": "15px",
+                    "width": "15px",
+                  }
+                }
+              />
+            </div>
+          </div>
+          <div
+            className="makeStyles-paginationContainer-25"
+          >
+            <span
+              className="makeStyles-paginationLabel-26"
+            >
+              1 - 1
+               of 
+              1
+            </span>
+            <button
+              aria-label="first page"
+              className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary Mui-disabled Mui-disabled"
+              disabled={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              aria-label="chevron-left"
+              className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary Mui-disabled Mui-disabled"
+              disabled={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              aria-label="chevron-right"
+              className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary Mui-disabled Mui-disabled"
+              disabled={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <button
+              aria-label="last page"
+              className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary Mui-disabled Mui-disabled"
+              disabled={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

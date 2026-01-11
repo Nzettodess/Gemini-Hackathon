@@ -1,0 +1,32 @@
+capacity:
+  solar:
+    - datetime: '2017-01-01'
+      source: Ember, Yearly electricity data
+      value: 20.0
+    - datetime: '2018-01-01'
+      source: Ember, Yearly electricity data
+      value: 30.0
+    - datetime: '2022-01-01'
+      source: Ember, Yearly electricity data
+      value: 20.0
+  unknown:
+    - datetime: '2017-01-01'
+      source: Ember, Yearly electricity data
+      value: 200.0
+    - datetime: '2018-01-01'
+      source: Ember, Yearly electricity data
+      value: 210.0
+  wind:
+    - datetime: '2017-01-01'
+      source: Ember, Yearly electricity data
+      value: 0.0
+country: ER
+country_name: Eritrea
+currency: ERN
+has_day_ahead_price_license: False
+hide_day_ahead_price: False
+parsers:
+  productionCapacity: EMBER.fetch_production_capacity
+region: Africa
+timezone: Africa/Asmara
+zone_name: Eritrea
