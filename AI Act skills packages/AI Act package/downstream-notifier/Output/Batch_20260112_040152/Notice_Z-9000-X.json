@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "to": "compliance@zenith-ai.com",
+    "subject": "Article 13 Compliance Update",
+    "timestamp": "2026-01-12T04:03:57.877136"
+  },
+  "content": {
+    "body": "Dear Zenith AI Systems Corp,\n\nPlease see attached compliance updates.",
+    "summary_text": "# Regulatory Compliance Notification\n**Provider:** Zenith AI Systems Corp (Z-9000-X)\n**Date:** 2026-01-12\n\nPlease refer to the attached Excel documentation for full Article 13 and Annex XII compliance details. \nThis summary is a notification of changes only."
+  },
+  "attachments": [
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260112_040152\\Annex_XII_Provider_Z-9000-X.xlsx",
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260112_040152\\Article_13_Compliance_Z-9000-X.xlsx",
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260112_040152\\Summary_Z-9000-X.pdf"
+  ]
+}

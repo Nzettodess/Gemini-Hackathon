@@ -1,0 +1,2310 @@
+{
+  "GPAI Model Documentation": [
+    [
+      "EU AI ACT - ANNEX XII: TRANSPARENCY INFORMATION FOR DOWNSTREAM PROVIDERS",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Technical Documentation for Providers of General-Purpose AI Models (Article 53(1)(b))",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Ref.",
+      "Requirement",
+      "Description/Guidance",
+      "Your Input",
+      "Status",
+      "Notes"
+    ],
+    [
+      "1. GENERAL DESCRIPTION OF THE GPAI MODEL - Annex XII(1)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "XII.1.a",
+      "Intended Tasks",
+      "Tasks that the model is intended to perform",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.a",
+      "AI System Integration Types",
+      "Type and nature of AI systems into which the model can be integrated",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.a",
+      "Example Use Cases",
+      "Illustrative examples of how the model can be used",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "XII.1.b",
+      "Acceptable Use Policy",
+      "Policies defining acceptable and prohibited uses of the model",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.b",
+      "Prohibited Uses",
+      "Explicitly prohibited applications or use cases",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.b",
+      "Use Restrictions",
+      "Any restrictions on deployment contexts",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.c",
+      "Release Date",
+      "Date when the model was released",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.c",
+      "Distribution Method",
+      "How the model is distributed (API, download, etc.)",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.c",
+      "Access Channels",
+      "Platforms or channels where model is available",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.d",
+      "Hardware Interaction",
+      "How the model interacts with external hardware",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "XII.1.d",
+      "Software Interaction",
+      "How the model interacts with external software",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "XII.1.d",
+      "API Specifications",
+      "API endpoints and integration methods",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.e",
+      "Software Versions",
+      "Versions of relevant software for model usage",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "XII.1.e",
+      "Dependencies",
+      "Required libraries, frameworks, and dependencies",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.e",
+      "Compatibility Requirements",
+      "Minimum system requirements",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.f",
+      "Model Architecture",
+      "Description of the model architecture (e.g., Transformer, CNN)",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.f",
+      "Number of Parameters",
+      "Total parameter count of the model",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.f",
+      "Model Size",
+      "Size of model files in storage",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.g",
+      "Input Modality",
+      "Types of inputs accepted (text, image, audio, etc.)",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.g",
+      "Input Format",
+      "Format specifications for inputs (JSON, etc.)",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.g",
+      "Output Modality",
+      "Types of outputs generated",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.g",
+      "Output Format",
+      "Format specifications for outputs",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.h",
+      "Model License",
+      "License under which the model is provided",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.h",
+      "License Terms",
+      "Key terms and conditions of the license",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.1.h",
+      "Commercial Use Terms",
+      "Terms for commercial deployment",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "2. MODEL ELEMENTS AND DEVELOPMENT PROCESS - Annex XII(2)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "XII.2.a",
+      "Integration Instructions",
+      "Step-by-step instructions for integrating the model",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.2.a",
+      "Required Infrastructure",
+      "Hardware/cloud infrastructure requirements",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.2.a",
+      "Technical Tools",
+      "Tools and SDKs provided for integration",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.2.a",
+      "Integration Code Examples",
+      "Sample code for common integration scenarios",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "XII.2.b",
+      "Input Modality Details",
+      "Detailed specification of input types",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.2.b",
+      "Output Modality Details",
+      "Detailed specification of output types",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.2.b",
+      "Context Window Length",
+      "Maximum context window/input size",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.2.b",
+      "Maximum Output Size",
+      "Maximum output length/size",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "XII.2.b",
+      "Token Limits",
+      "Token limits for inputs and outputs",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "XII.2.b",
+      "Rate Limits",
+      "API rate limits and quotas",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "XII.2.c",
+      "Training Data Type",
+      "Types of data used for training (text, images, etc.)",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "XII.2.c",
+      "Training Data Provenance",
+      "Sources of training data",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "XII.2.c",
+      "Data Curation Methodology",
+      "Methods used to curate and process training data",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "XII.2.c",
+      "Testing Data Information",
+      "Information about testing datasets",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "XII.2.c",
+      "Validation Data Information",
+      "Information about validation datasets",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "ADDITIONAL RECOMMENDED INFORMATION (Best Practices)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "REC.1",
+      "Model Card",
+      "Link to or inclusion of model card",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "REC.2",
+      "Performance Benchmarks",
+      "Results on standard benchmarks",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "REC.3",
+      "Known Limitations",
+      "Documented limitations of the model",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "REC.4",
+      "Bias Assessment",
+      "Assessment of potential biases in model outputs",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "REC.5",
+      "Safety Evaluations",
+      "Results of safety testing",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "REC.6",
+      "Red Team Testing",
+      "Summary of adversarial testing performed",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "REC.7",
+      "Version History",
+      "Changelog and version history",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "REC.8",
+      "Support Channels",
+      "Technical support contact information",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      "REC.9",
+      "Update Policy",
+      "Policy for model updates and deprecation",
+      null,
+      "\u2610 Complete",
+      "Recommended"
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "Compliance Checklist": [
+    [
+      "ANNEX XII COMPLIANCE CHECKLIST",
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Annex Ref.",
+      "Requirement",
+      "Compliant?",
+      "Evidence Location",
+      "Responsible Person"
+    ],
+    [
+      "XII(1)(a)",
+      "Intended tasks documented",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(1)(a)",
+      "AI system integration types specified",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(1)(b)",
+      "Acceptable use policies defined",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(1)(c)",
+      "Release date documented",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(1)(c)",
+      "Distribution methods specified",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(1)(d)",
+      "Hardware/software interaction described",
+      "\u2610 Yes / \u2610 No / \u2610 N/A",
+      null,
+      null
+    ],
+    [
+      "XII(1)(e)",
+      "Relevant software versions listed",
+      "\u2610 Yes / \u2610 No / \u2610 N/A",
+      null,
+      null
+    ],
+    [
+      "XII(1)(f)",
+      "Architecture described",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(1)(f)",
+      "Number of parameters specified",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(1)(g)",
+      "Input modality and format documented",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(1)(g)",
+      "Output modality and format documented",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(1)(h)",
+      "License specified",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(2)(a)",
+      "Integration instructions provided",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(2)(a)",
+      "Required infrastructure documented",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(2)(a)",
+      "Technical tools listed",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(2)(b)",
+      "Input/output modality detailed",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(2)(b)",
+      "Maximum sizes (context window) specified",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "XII(2)(c)",
+      "Training data type documented",
+      "\u2610 Yes / \u2610 No / \u2610 N/A",
+      null,
+      null
+    ],
+    [
+      "XII(2)(c)",
+      "Training data provenance documented",
+      "\u2610 Yes / \u2610 No / \u2610 N/A",
+      null,
+      null
+    ],
+    [
+      "XII(2)(c)",
+      "Data curation methodology described",
+      "\u2610 Yes / \u2610 No / \u2610 N/A",
+      null,
+      null
+    ],
+    [
+      "Art. 53(1)(b)",
+      "Documentation enables good understanding",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 53(1)(b)",
+      "Documentation enables compliance",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "Downstream Provider Info": [
+    [
+      "DOWNSTREAM PROVIDER INFORMATION",
+      null
+    ],
+    [
+      "Information about the downstream provider receiving this documentation",
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      "Downstream Provider Name",
+      null
+    ],
+    [
+      "Provider Registration Number",
+      null
+    ],
+    [
+      "Contact Person",
+      null
+    ],
+    [
+      "Contact Email",
+      null
+    ],
+    [
+      "Contact Phone",
+      null
+    ],
+    [
+      "Address",
+      null
+    ],
+    [
+      "Intended AI System",
+      "Description of the AI system being developed"
+    ],
+    [
+      "Intended Use Case",
+      "How the GPAI model will be used"
+    ],
+    [
+      "Risk Classification",
+      "\u2610 High-Risk / \u2610 Limited Risk / \u2610 Minimal Risk"
+    ],
+    [
+      "Integration Date",
+      null
+    ],
+    [
+      "Documentation Version Received",
+      null
+    ],
+    [
+      "Date Documentation Received",
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ]
+  ],
+  "Document Metadata": [
+    [
+      "GPAI MODEL PROVIDER - DOCUMENT METADATA",
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      "GPAI Model Name",
+      null
+    ],
+    [
+      "GPAI Model Version",
+      null
+    ],
+    [
+      "Provider Name",
+      null
+    ],
+    [
+      "Provider Address",
+      null
+    ],
+    [
+      "Provider Contact Email",
+      null
+    ],
+    [
+      "Authorised Representative (if outside EU)",
+      null
+    ],
+    [
+      "Document Version",
+      "1.0"
+    ],
+    [
+      "Date Created",
+      null
+    ],
+    [
+      "Last Updated",
+      null
+    ],
+    [
+      "Author",
+      null
+    ],
+    [
+      "Reviewer",
+      null
+    ],
+    [
+      "Approval Date",
+      null
+    ],
+    [
+      "Approved By",
+      null
+    ],
+    [
+      "Next Review Date",
+      null
+    ],
+    [
+      "Systemic Risk Classification",
+      "\u2610 Yes (Art. 51) / \u2610 No"
+    ],
+    [
+      "Open Source Exception Applies",
+      "\u2610 Yes (Art. 53(2)) / \u2610 No"
+    ],
+    [
+      "Copyright Policy Reference",
+      "Per Art. 53(1)(c)"
+    ],
+    [
+      "Training Data Summary URL",
+      "Per Art. 53(1)(d)"
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ]
+  ]
+}

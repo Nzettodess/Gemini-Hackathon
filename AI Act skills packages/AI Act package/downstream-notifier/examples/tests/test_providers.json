@@ -1,0 +1,17 @@
+[
+    {
+        "id": "P001",
+        "name": "Alpha Tech Solutions",
+        "email": "contact@alphatech.example"
+    },
+    {
+        "id": "P002",
+        "name": "Beta Global Systems",
+        "email": "info@betaglobal.example"
+    },
+    {
+        "id": "P003",
+        "name": "Gamma AI Services",
+        "email": "admin@gammaai.example"
+    }
+]

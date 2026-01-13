@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "to": "compliance@beta-fintech.io",
+    "subject": "Article 13 Compliance Update",
+    "timestamp": "2026-01-12T04:00:46.972935"
+  },
+  "content": {
+    "body": "Dear Beta Financial Algorithmic Trading,\n\nPlease see attached compliance updates.",
+    "summary_text": "# Regulatory Compliance Notification\n**Provider:** Beta Financial Algorithmic Trading (FIN-ALGO-BETA)\n**Date:** 2026-01-12\n\nPlease refer to the attached Excel documentation for full Article 13 and Annex XII compliance details. \nThis summary is a notification of changes only."
+  },
+  "attachments": [
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260112_035947\\Annex_XII_Provider_FIN-ALGO-BETA.xlsx",
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260112_035947\\Summary_FIN-ALGO-BETA.pdf"
+  ]
+}

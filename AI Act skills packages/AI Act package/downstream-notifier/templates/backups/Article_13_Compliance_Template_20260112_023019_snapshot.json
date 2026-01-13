@@ -1,0 +1,1908 @@
+{
+  "Instructions for Use": [
+    [
+      "EU AI ACT - ARTICLE 13: TRANSPARENCY AND PROVISION OF INFORMATION TO DEPLOYERS",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Instructions for Use - Compliance Documentation Template",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Ref.",
+      "Requirement",
+      "Description/Evidence",
+      "Your Input",
+      "Status",
+      "Notes"
+    ],
+    [
+      "PROVIDER INFORMATION - Article 13(3)(a)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.a.1",
+      "Provider Name",
+      "Legal name of the AI system provider",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.a.2",
+      "Provider Address",
+      "Registered business address",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.a.3",
+      "Provider Contact Details",
+      "Email, phone, and contact person",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.a.4",
+      "Authorised Representative (if applicable)",
+      "Name and contact details of EU representative",
+      null,
+      "\u2610 Complete",
+      "If provider is outside EU"
+    ],
+    [
+      "INTENDED PURPOSE - Article 13(3)(b)(i)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.b.i.1",
+      "Primary Intended Purpose",
+      "Main use case and application of the AI system",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.i.2",
+      "Target Users/Deployers",
+      "Who is intended to use this system",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.i.3",
+      "Target Subjects",
+      "Who the AI system is intended to be used on",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.i.4",
+      "Deployment Context",
+      "Environment and context of intended use",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.i.5",
+      "Precluded Uses",
+      "Uses that are explicitly NOT intended",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "ACCURACY, ROBUSTNESS & CYBERSECURITY - Article 13(3)(b)(ii)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.b.ii.1",
+      "Accuracy Level",
+      "Declared accuracy metrics and values",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.ii.2",
+      "Accuracy Metrics Used",
+      "Specific metrics (e.g., precision, recall, F1)",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.ii.3",
+      "Robustness Level",
+      "System resilience to errors/faults",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.ii.4",
+      "Cybersecurity Measures",
+      "Security measures implemented",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.ii.5",
+      "Testing Conditions",
+      "Conditions under which metrics were tested",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.ii.6",
+      "Circumstances Affecting Performance",
+      "Known factors that may impact accuracy/robustness",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "KNOWN RISKS - Article 13(3)(b)(iii)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.b.iii.1",
+      "Health Risks",
+      "Known circumstances that may cause health risks",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.iii.2",
+      "Safety Risks",
+      "Known circumstances that may cause safety risks",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.iii.3",
+      "Fundamental Rights Risks",
+      "Known circumstances affecting fundamental rights",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.iii.4",
+      "Foreseeable Misuse Scenarios",
+      "Reasonably foreseeable misuse and associated risks",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "EXPLAINABILITY - Article 13(3)(b)(iv)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.b.iv.1",
+      "Explainability Capabilities",
+      "Technical means to explain AI outputs",
+      null,
+      "\u2610 Complete",
+      "If applicable"
+    ],
+    [
+      "13.3.b.iv.2",
+      "Interpretation Methods",
+      "Methods available to interpret decisions",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "PERFORMANCE ON SPECIFIC GROUPS - Article 13(3)(b)(v)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.b.v.1",
+      "Target Groups Identified",
+      "Specific persons/groups the system is used on",
+      null,
+      "\u2610 Complete",
+      "When appropriate"
+    ],
+    [
+      "13.3.b.v.2",
+      "Group-Specific Performance",
+      "Performance metrics per identified group",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "INPUT DATA SPECIFICATIONS - Article 13(3)(b)(vi)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.b.vi.1",
+      "Required Input Data Format",
+      "Technical specifications for input data",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.vi.2",
+      "Training Data Information",
+      "Description of training datasets used",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.vi.3",
+      "Validation Data Information",
+      "Description of validation datasets used",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.vi.4",
+      "Testing Data Information",
+      "Description of testing datasets used",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "OUTPUT INTERPRETATION - Article 13(3)(b)(vii)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.b.vii.1",
+      "Output Format Description",
+      "Format and structure of AI system outputs",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.vii.2",
+      "Interpretation Guidance",
+      "How to correctly interpret outputs",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.b.vii.3",
+      "Appropriate Use of Outputs",
+      "Guidance on proper use of AI outputs",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "PRE-DETERMINED CHANGES - Article 13(3)(c)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.c.1",
+      "Planned System Changes",
+      "Changes pre-determined at conformity assessment",
+      null,
+      "\u2610 Complete",
+      "If any"
+    ],
+    [
+      "13.3.c.2",
+      "Performance Changes",
+      "Expected performance variations",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "HUMAN OVERSIGHT MEASURES - Article 13(3)(d)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.d.1",
+      "Human Oversight Requirements",
+      "Required human oversight per Article 14",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.d.2",
+      "Technical Measures for Oversight",
+      "Tools facilitating output interpretation",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.d.3",
+      "Override Mechanisms",
+      "How to override or interrupt the system",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.d.4",
+      "Required Competencies",
+      "Skills/training needed for oversight personnel",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "RESOURCES AND MAINTENANCE - Article 13(3)(e)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.e.1",
+      "Computational Resources",
+      "Required computing power/resources",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.e.2",
+      "Hardware Resources",
+      "Required hardware specifications",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.e.3",
+      "Expected Lifetime",
+      "Expected operational lifetime of system",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.e.4",
+      "Maintenance Measures",
+      "Required maintenance activities",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.e.5",
+      "Maintenance Frequency",
+      "How often maintenance should occur",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.e.6",
+      "Software Update Requirements",
+      "Update procedures and frequency",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "LOGGING MECHANISMS - Article 13(3)(f)",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "13.3.f.1",
+      "Log Collection Mechanism",
+      "How logs are collected",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.f.2",
+      "Log Storage Requirements",
+      "How and where logs should be stored",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.f.3",
+      "Log Interpretation Guidance",
+      "How to interpret logged data",
+      null,
+      "\u2610 Complete",
+      null
+    ],
+    [
+      "13.3.f.4",
+      "Log Retention Period",
+      "How long logs must be retained",
+      null,
+      "\u2610 Complete",
+      "Min. 6 months per Art. 19"
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "Compliance Checklist": [
+    [
+      "ARTICLE 13 COMPLIANCE CHECKLIST",
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Article Ref.",
+      "Requirement",
+      "Compliant?",
+      "Evidence Location",
+      "Responsible Person"
+    ],
+    [
+      "Art. 13(1)",
+      "AI system designed for sufficient transparency",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(1)",
+      "Deployers can interpret system outputs",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(1)",
+      "Deployers can use outputs appropriately",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(2)",
+      "Instructions for use provided in digital format",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(2)",
+      "Information is concise",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(2)",
+      "Information is complete",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(2)",
+      "Information is correct",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(2)",
+      "Information is clear",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(2)",
+      "Information is relevant",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(2)",
+      "Information is accessible",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(2)",
+      "Information is comprehensible to deployers",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(a)",
+      "Provider identity included",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(a)",
+      "Provider contact details included",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(b)(i)",
+      "Intended purpose documented",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(b)(ii)",
+      "Accuracy levels declared",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(b)(ii)",
+      "Robustness information provided",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(b)(ii)",
+      "Cybersecurity information provided",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(b)(iii)",
+      "Known risk circumstances documented",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(b)(iv)",
+      "Explainability capabilities described",
+      "\u2610 Yes / \u2610 No / \u2610 N/A",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(b)(v)",
+      "Group-specific performance documented",
+      "\u2610 Yes / \u2610 No / \u2610 N/A",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(b)(vi)",
+      "Input data specifications provided",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(b)(vii)",
+      "Output interpretation guidance provided",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(c)",
+      "Pre-determined changes documented",
+      "\u2610 Yes / \u2610 No / \u2610 N/A",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(d)",
+      "Human oversight measures described",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(e)",
+      "Resource requirements specified",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(e)",
+      "Maintenance measures documented",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      "Art. 13(3)(f)",
+      "Logging mechanisms described",
+      "\u2610 Yes / \u2610 No",
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "Document Metadata": [
+    [
+      "DOCUMENT METADATA",
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      "AI System Name",
+      null
+    ],
+    [
+      "AI System Version",
+      null
+    ],
+    [
+      "Document Version",
+      "1.0"
+    ],
+    [
+      "Date Created",
+      null
+    ],
+    [
+      "Last Updated",
+      null
+    ],
+    [
+      "Author",
+      null
+    ],
+    [
+      "Reviewer",
+      null
+    ],
+    [
+      "Approval Date",
+      null
+    ],
+    [
+      "Approved By",
+      null
+    ],
+    [
+      "Next Review Date",
+      null
+    ],
+    [
+      "Risk Classification",
+      "\u2610 High-Risk (Annex III)"
+    ],
+    [
+      "Conformity Assessment Status",
+      null
+    ],
+    [
+      "EU Database Registration ID",
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      null,
+      null
+    ]
+  ]
+}

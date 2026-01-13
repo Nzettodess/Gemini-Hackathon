@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "to": "legal@gamma-logistix.com",
+    "subject": "Article 13 Compliance Update",
+    "timestamp": "2026-01-12T02:30:49.906880"
+  },
+  "content": {
+    "body": "Dear Gamma Logistics & Drone Delivery,\n\nPlease see attached compliance updates.",
+    "summary_text": "# Regulatory Compliance Notification\n**Provider:** Gamma Logistics & Drone Delivery (LOG-DRONE-G7)\n**Date:** 2026-01-12\n\nPlease refer to the attached Excel documentation for full Article 13 and Annex XII compliance details. \nThis summary is a notification of changes only."
+  },
+  "attachments": [
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260112_022915\\Annex_XII_Provider_LOG-DRONE-G7.xlsx",
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260112_022915\\Article_13_Compliance_LOG-DRONE-G7.xlsx",
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260112_022915\\Summary_LOG-DRONE-G7.pdf"
+  ]
+}
