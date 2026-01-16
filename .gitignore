@@ -51,3 +51,4 @@ store_info.txt
 # Temporary files
 *.tmp
 temp/
+*~$*.xlsx

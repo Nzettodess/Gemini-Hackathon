@@ -1,0 +1,462 @@
+{
+  "timestamp": "2026-01-11T18:57:38.424915",
+  "statistics": {
+    "total_tools": 109,
+    "github_tools": 36,
+    "downloaded": 23,
+    "skipped": 1,
+    "failed": 0,
+    "already_exists": 12,
+    "by_category": {
+      "Legal": {
+        "total": 7,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Cybersecurity": {
+        "total": 9,
+        "downloaded": 1,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Environment": {
+        "total": 6,
+        "downloaded": 1,
+        "skipped": 1,
+        "failed": 0
+      },
+      "Technical": {
+        "total": 8,
+        "downloaded": 3,
+        "skipped": 3,
+        "failed": 0
+      },
+      "Trust": {
+        "total": 6,
+        "downloaded": 4,
+        "skipped": 2,
+        "failed": 0
+      },
+      "Fundamental Rights": {
+        "total": 6,
+        "downloaded": 1,
+        "skipped": 3,
+        "failed": 0
+      },
+      "Privacy": {
+        "total": 7,
+        "downloaded": 5,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Societal": {
+        "total": 8,
+        "downloaded": 3,
+        "skipped": 1,
+        "failed": 0
+      },
+      "Third-Party": {
+        "total": 7,
+        "downloaded": 4,
+        "skipped": 1,
+        "failed": 0
+      },
+      "Business": {
+        "total": 5,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Health & Safety": {
+        "total": 7,
+        "downloaded": 0,
+        "skipped": 1,
+        "failed": 0
+      },
+      "GDPR Compliance": {
+        "total": 10,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "EU AI Act Compliance": {
+        "total": 14,
+        "downloaded": 1,
+        "skipped": 1,
+        "failed": 0
+      },
+      "\u8c01\u505a\u4ec0\u4e48": {
+        "total": 1,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Mia": {
+        "total": 1,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Johnny": {
+        "total": 1,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Jingxiao": {
+        "total": 1,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Amber": {
+        "total": 1,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Bo": {
+        "total": 1,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Ling": {
+        "total": 1,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Jiang": {
+        "total": 1,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      },
+      "Kangheng": {
+        "total": 1,
+        "downloaded": 0,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  },
+  "downloads": [
+    {
+      "row": 17,
+      "category": "Cybersecurity",
+      "tool_name": "Prompt Injection Detector",
+      "github_url": "https://github.com/protectai/rebuff",
+      "target_folder": "Cybersecurity",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Cybersecurity/rebuff"
+    },
+    {
+      "row": 18,
+      "category": "Environment",
+      "tool_name": "CodeCarbon",
+      "github_url": "https://github.com/mlco2/codecarbon",
+      "target_folder": "Environment",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Environment/codecarbon"
+    },
+    {
+      "row": 22,
+      "category": "Environment",
+      "tool_name": "Cloud Carbon Footprint",
+      "github_url": "https://github.com/cloud-carbon-footprint/cloud-carbon-footprint",
+      "target_folder": "Environment",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Environment/cloud-carbon-footprint"
+    },
+    {
+      "row": 24,
+      "category": "Technical",
+      "tool_name": "Evidently AI",
+      "github_url": "https://github.com/evidentlyai/evidently",
+      "target_folder": "Technical",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Technical/evidently"
+    },
+    {
+      "row": 25,
+      "category": "Technical",
+      "tool_name": "Alibi Detect",
+      "github_url": "https://github.com/SeldonIO/alibi-detect",
+      "target_folder": "Technical",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Technical/alibi-detect"
+    },
+    {
+      "row": 26,
+      "category": "Technical",
+      "tool_name": "RAGAS",
+      "github_url": "https://github.com/explodinggradients/ragas",
+      "target_folder": "Technical",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Technical/ragas"
+    },
+    {
+      "row": 27,
+      "category": "Technical",
+      "tool_name": "DeepEval",
+      "github_url": "https://github.com/confident-ai/deepeval",
+      "target_folder": "Technical",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Technical/deepeval"
+    },
+    {
+      "row": 28,
+      "category": "Technical",
+      "tool_name": "Hugging Face Evaluate",
+      "github_url": "https://github.com/huggingface/evaluate",
+      "target_folder": "Technical",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Technical/evaluate"
+    },
+    {
+      "row": 31,
+      "category": "Technical",
+      "tool_name": "PromptFoo",
+      "github_url": "https://github.com/promptfoo/promptfoo",
+      "target_folder": "Technical",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Technical/promptfoo"
+    },
+    {
+      "row": 32,
+      "category": "Trust",
+      "tool_name": "SHAP Explainer",
+      "github_url": "https://github.com/slundberg/shap",
+      "target_folder": "Trust",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Trust/shap"
+    },
+    {
+      "row": 33,
+      "category": "Trust",
+      "tool_name": "LIME",
+      "github_url": "https://github.com/marcotcr/lime",
+      "target_folder": "Trust",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Trust/lime"
+    },
+    {
+      "row": 34,
+      "category": "Trust",
+      "tool_name": "Captum",
+      "github_url": "https://github.com/pytorch/captum",
+      "target_folder": "Trust",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Trust/captum"
+    },
+    {
+      "row": 35,
+      "category": "Trust",
+      "tool_name": "InterpretML",
+      "github_url": "https://github.com/interpretml/interpret",
+      "target_folder": "Trust",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Trust/interpret"
+    },
+    {
+      "row": 36,
+      "category": "Trust",
+      "tool_name": "What-If Tool",
+      "github_url": "https://github.com/PAIR-code/what-if-tool",
+      "target_folder": "Trust",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Trust/what-if-tool"
+    },
+    {
+      "row": 37,
+      "category": "Trust",
+      "tool_name": "Axe Accessibility",
+      "github_url": "https://github.com/dequelabs/axe-core",
+      "target_folder": "Trust",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Trust/axe-core"
+    },
+    {
+      "row": 38,
+      "category": "Fundamental Rights",
+      "tool_name": "AI Fairness 360",
+      "github_url": "https://github.com/Trusted-AI/AIF360",
+      "target_folder": "Fundamental Rights",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Fundamental Rights/AIF360"
+    },
+    {
+      "row": 39,
+      "category": "Fundamental Rights",
+      "tool_name": "Fairlearn",
+      "github_url": "https://github.com/fairlearn/fairlearn",
+      "target_folder": "Fundamental Rights",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Fundamental Rights/fairlearn"
+    },
+    {
+      "row": 40,
+      "category": "Fundamental Rights",
+      "tool_name": "Aequitas",
+      "github_url": "https://github.com/dssg/aequitas",
+      "target_folder": "Fundamental Rights",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Fundamental Rights/aequitas"
+    },
+    {
+      "row": 43,
+      "category": "Fundamental Rights",
+      "tool_name": "Disaggregated Evaluation",
+      "github_url": "https://github.com/Trusted-AI/AIF360",
+      "target_folder": "Fundamental Rights",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Fundamental Rights/AIF360"
+    },
+    {
+      "row": 44,
+      "category": "Privacy",
+      "tool_name": "Presidio",
+      "github_url": "https://github.com/microsoft/presidio",
+      "target_folder": "EU AI Act Compliance",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/EU AI Act Compliance/presidio"
+    },
+    {
+      "row": 45,
+      "category": "Privacy",
+      "tool_name": "spaCy NER",
+      "github_url": "https://github.com/explosion/spaCy",
+      "target_folder": "EU AI Act Compliance",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/EU AI Act Compliance/spaCy"
+    },
+    {
+      "row": 46,
+      "category": "Privacy",
+      "tool_name": "Faker",
+      "github_url": "https://github.com/joke2k/faker",
+      "target_folder": "EU AI Act Compliance",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/EU AI Act Compliance/faker"
+    },
+    {
+      "row": 47,
+      "category": "Privacy",
+      "tool_name": "ARX Data Anonymization",
+      "github_url": "https://github.com/arx-deidentifier/arx",
+      "target_folder": "EU AI Act Compliance",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/EU AI Act Compliance/arx"
+    },
+    {
+      "row": 48,
+      "category": "Privacy",
+      "tool_name": "OpenDP",
+      "github_url": "https://github.com/opendp/opendp",
+      "target_folder": "EU AI Act Compliance",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/EU AI Act Compliance/opendp"
+    },
+    {
+      "row": 52,
+      "category": "Societal",
+      "tool_name": "Detoxify",
+      "github_url": "https://github.com/unitaryai/detoxify",
+      "target_folder": "Societal",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Societal/detoxify"
+    },
+    {
+      "row": 54,
+      "category": "Societal",
+      "tool_name": "TextBlob Sentiment",
+      "github_url": "https://github.com/sloria/TextBlob",
+      "target_folder": "Societal",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Societal/TextBlob"
+    },
+    {
+      "row": 55,
+      "category": "Societal",
+      "tool_name": "VADER Sentiment",
+      "github_url": "https://github.com/cjhutto/vaderSentiment",
+      "target_folder": "Societal",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Societal/vaderSentiment"
+    },
+    {
+      "row": 56,
+      "category": "Societal",
+      "tool_name": "Hate Speech Detector",
+      "github_url": "https://github.com/Hironsan/HateSonar",
+      "target_folder": "Societal",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Societal/HateSonar"
+    },
+    {
+      "row": 60,
+      "category": "Third-Party",
+      "tool_name": "Safety (PyUp)",
+      "github_url": "https://github.com/pyupio/safety",
+      "target_folder": "Third-Party",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Third-Party/safety"
+    },
+    {
+      "row": 62,
+      "category": "Third-Party",
+      "tool_name": "Syft SBOM Generator",
+      "github_url": "https://github.com/anchore/syft",
+      "target_folder": "Third-Party",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Third-Party/syft"
+    },
+    {
+      "row": 63,
+      "category": "Third-Party",
+      "tool_name": "Grype Vulnerability Scanner",
+      "github_url": "https://github.com/anchore/grype",
+      "target_folder": "Third-Party",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Third-Party/grype"
+    },
+    {
+      "row": 64,
+      "category": "Third-Party",
+      "tool_name": "OSSF Scorecard",
+      "github_url": "https://github.com/ossf/scorecard",
+      "target_folder": "Third-Party",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Third-Party/scorecard"
+    },
+    {
+      "row": 65,
+      "category": "Third-Party",
+      "tool_name": "License Checker",
+      "github_url": "https://github.com/nexB/scancode-toolkit",
+      "target_folder": "Third-Party",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Third-Party/scancode-toolkit"
+    },
+    {
+      "row": 76,
+      "category": "Health & Safety",
+      "tool_name": "Confidence Calibration",
+      "github_url": "https://github.com/uncertainty-toolbox/uncertainty-toolbox",
+      "target_folder": "Health & Safety",
+      "success": true,
+      "message": "Already exists: /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/Health & Safety/uncertainty-toolbox"
+    },
+    {
+      "row": 92,
+      "category": "EU AI Act Compliance",
+      "tool_name": "Technical Documentation Generator",
+      "github_url": "https://github.com/mkdocs/mkdocs",
+      "target_folder": "EU AI Act Compliance",
+      "success": true,
+      "message": "Successfully cloned to /Users/miachen/Desktop/Mia/DT Master/Tech/Hackthon/geminihackathon/Risks packages/EU AI Act Compliance/mkdocs"
+    }
+  ]
+}
