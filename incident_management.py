@@ -1,149 +1,140 @@
 #!/usr/bin/env python3
 """
-EU AI Act Article 73 - Incident Management System
-==================================================
-Comprehensive incident management for high-risk AI systems with:
-- Incident detection (automated and manual)
-- Severity classification (Article 3(49))
-- Timeline tracking (2/10/15 day reporting deadlines)
-- Remediation workflow with AI assistance
-- Regulatory notification
-- Investigation and risk assessment
+EU AI Act Article 73 - Serious Incident Management System
+==========================================================
+Comprehensive incident detection, classification, timeline tracking, 
+remediation workflow, and regulatory notification system for EU AI Act compliance.
 
-EU AI Act Compliance: Article 73 - Reporting of serious incidents
+EU AI Act Article 73 Requirements:
+- Incident detection and classification
+- 15-day reporting timeline tracking (with exceptions: 2 days for critical infrastructure, 10 days for death)
+- Remediation workflow
+- Regulatory notification to market surveillance authorities
+- AI-assisted automation with human judgment for serious incidents
+
+Usage:
+    from incident_management import IncidentManager
+    manager = IncidentManager()
+    incident = manager.create_incident(...)
+    manager.classify_severity(incident)
+    manager.track_reporting_timeline(incident)
 """
 
 import json
 import os
 from datetime import datetime, timedelta
-from enum import Enum
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+from enum import Enum
 from dataclasses import dataclass, asdict, field
-import uuid
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+from rich.markdown import Markdown
 
 try:
     from google import genai
     from google.genai import types
-    GEMINI_AVAILABLE = True
 except ImportError:
-    GEMINI_AVAILABLE = False
+    print("Warning: 'google-genai' package not found. AI features will be limited.")
+    genai = None
 
+# Configuration
+BASE_DIR = Path(__file__).resolve().parent
+INCIDENTS_DIR = BASE_DIR / "incidents"
+INCIDENTS_DIR.mkdir(exist_ok=True)
 
-class IncidentSeverity(str, Enum):
-    """Incident severity levels."""
-    LOW = "low"
-    MEDIUM = "medium"
-    HIGH = "high"
-    CRITICAL = "critical"
+# EU AI Act Article 3, point (49) - Serious Incident Definition
+class SeriousIncidentType(Enum):
+    """Serious incident types as defined in EU AI Act Article 3(49)"""
+    DEATH_OR_SERIOUS_HARM = "a"  # Article 3(49)(a)
+    CRITICAL_INFRASTRUCTURE_DISRUPTION = "b"  # Article 3(49)(b)
+    FUNDAMENTAL_RIGHTS_INFRINGEMENT = "c"  # Article 3(49)(c)
+    PROPERTY_ENVIRONMENT_HARM = "d"  # Article 3(49)(d)
 
+class IncidentSeverity(Enum):
+    """Incident severity classification"""
+    CRITICAL = "critical"  # Death or critical infrastructure - 2-10 days reporting
+    HIGH = "high"  # Serious harm or fundamental rights - 15 days reporting
+    MEDIUM = "medium"  # Property/environment harm - 15 days reporting
+    LOW = "low"  # Non-serious incidents - monitoring only
 
-class SeriousIncidentType(str, Enum):
-    """Serious incident types per EU AI Act Article 3(49)."""
-    TYPE_A = "a"  # Death or serious harm to person's health → 10 days
-    TYPE_B = "b"  # Serious disruption of critical infrastructure → 2 days
-    TYPE_C = "c"  # Infringement of fundamental rights → 15 days
-    TYPE_D = "d"  # Serious harm to property/environment → 15 days
-    NOT_SERIOUS = "not_serious"  # Not a serious incident
-
-
-class IncidentStatus(str, Enum):
-    """Incident lifecycle status."""
+class IncidentStatus(Enum):
+    """Incident workflow status"""
     DETECTED = "detected"
-    CLASSIFYING = "classifying"
+    CLASSIFIED = "classified"
     INVESTIGATING = "investigating"
     REMEDIATING = "remediating"
-    REPORTING = "reporting"
+    REPORTED = "reported"
     RESOLVED = "resolved"
     CLOSED = "closed"
 
-
 @dataclass
 class Incident:
-    """Incident record for EU AI Act Article 73 compliance."""
+    """Incident data structure for EU AI Act Article 73 compliance"""
     id: str
     title: str
     description: str
-    detected_at: str
-    detected_by: str  # "automated" or "human"
+    detected_at: datetime
+    detected_by: str  # "automated" or "human" or user identifier
     ai_system_id: str
     ai_system_name: str
-    member_state: str
+    member_state: str  # EU member state where incident occurred
     
     # Classification
-    severity: Optional[str] = None
-    incident_type: Optional[str] = None
+    severity: Optional[IncidentSeverity] = None
+    incident_type: Optional[SeriousIncidentType] = None
     is_serious: bool = False
-    serious_incident_type: Optional[str] = None
-    
-    # Causal link (Article 73(2))
     causal_link_established: bool = False
-    causal_link_established_at: Optional[str] = None
-    causal_link_evidence: Optional[str] = None
+    causal_link_established_at: Optional[datetime] = None
     
-    # Reporting timeline (Article 73)
-    reporting_deadline: Optional[str] = None
-    reporting_timeline_days: Optional[int] = None
+    # Timeline tracking (Article 73)
+    reporting_deadline: Optional[datetime] = None
+    reporting_timeline_days: Optional[int] = None  # 2, 10, or 15 days
     initial_report_submitted: bool = False
-    initial_report_submitted_at: Optional[str] = None
+    initial_report_submitted_at: Optional[datetime] = None
     complete_report_submitted: bool = False
-    complete_report_submitted_at: Optional[str] = None
+    complete_report_submitted_at: Optional[datetime] = None
     
-    # Status and workflow
-    status: str = "detected"
+    # Status
+    status: IncidentStatus = IncidentStatus.DETECTED
+    
+    # Remediation
     remediation_actions: List[str] = field(default_factory=list)
     remediation_status: str = "pending"
     corrective_actions: List[str] = field(default_factory=list)
     
-    # Regulatory notification (Article 73(1))
+    # Regulatory
     authority_notified: bool = False
-    authority_notified_at: Optional[str] = None
+    authority_notified_at: Optional[datetime] = None
     authority_contact: Optional[str] = None
     
-    # Investigation (Article 73(6))
+    # Investigation
     investigation_notes: List[str] = field(default_factory=list)
     risk_assessment: Optional[str] = None
     
     # Metadata
-    created_at: str = field(default_factory=lambda: datetime.utcnow().isoformat())
-    updated_at: str = field(default_factory=lambda: datetime.utcnow().isoformat())
+    created_at: datetime = field(default_factory=datetime.now)
+    updated_at: datetime = field(default_factory=datetime.now)
     metadata: Dict = field(default_factory=dict)
-    
-    def to_dict(self) -> Dict:
-        """Convert incident to dictionary."""
-        return asdict(self)
-    
-    @classmethod
-    def from_dict(cls, data: Dict) -> 'Incident':
-        """Create incident from dictionary."""
-        return cls(**data)
-
 
 class IncidentManager:
-    """Manages incidents for EU AI Act Article 73 compliance."""
+    """Manages incident detection, classification, tracking, and reporting for EU AI Act Article 73"""
     
-    def __init__(self, incidents_dir: Optional[Path] = None, use_ai: bool = True):
-        """
-        Initialize incident manager.
-        
-        Args:
-            incidents_dir: Directory to store incident JSON files
-            use_ai: Whether to use AI for classification and remediation suggestions
-        """
-        self.use_ai = use_ai and GEMINI_AVAILABLE
-        self.incidents_dir = incidents_dir or Path(__file__).parent / "incidents"
-        self.incidents_dir.mkdir(exist_ok=True)
+    def __init__(self, use_ai: bool = True):
+        self.console = Console()
+        self.incidents_dir = INCIDENTS_DIR
+        self.use_ai = use_ai and genai is not None
+        self.client = None
         
         if self.use_ai:
             api_key = os.environ.get("GEMINI_API_KEY")
             if api_key:
-                api_key = api_key.strip().split('\n')[0].split('\r')[0]
                 try:
                     self.client = genai.Client(api_key=api_key)
-                except Exception:
+                except Exception as e:
+                    self.console.print(f"[yellow]Warning: Could not initialize AI client: {e}[/yellow]")
                     self.use_ai = False
-            else:
-                self.use_ai = False
     
     def create_incident(
         self,
@@ -152,426 +143,480 @@ class IncidentManager:
         ai_system_id: str,
         ai_system_name: str,
         member_state: str,
-        detected_by: str = "human",
-        **kwargs
+        detected_by: str = "automated",
+        metadata: Optional[Dict] = None
     ) -> Incident:
-        """
-        Create a new incident record.
-        
-        Args:
-            title: Incident title
-            description: Detailed description
-            ai_system_id: Identifier of the AI system
-            ai_system_name: Name of the AI system
-            member_state: EU Member State where incident occurred
-            detected_by: "automated" or "human"
-            **kwargs: Additional fields
-        
-        Returns:
-            Created incident
-        """
-        incident_id = f"INC-{datetime.utcnow().strftime('%Y%m%d-%H%M%S')}-{uuid.uuid4().hex[:1]}"
+        """Create a new incident record"""
+        incident_id = f"INC-{datetime.now().strftime('%Y%m%d-%H%M%S')}-{len(list(self.incidents_dir.glob('*.json')))}"
         
         incident = Incident(
             id=incident_id,
             title=title,
             description=description,
-            detected_at=datetime.utcnow().isoformat(),
+            detected_at=datetime.now(),
             detected_by=detected_by,
             ai_system_id=ai_system_id,
             ai_system_name=ai_system_name,
             member_state=member_state,
-            status=IncidentStatus.DETECTED.value,
-            **kwargs
+            metadata=metadata or {}
         )
         
-        self._save_incident(incident)
-        return incident
-    
-    def classify_severity(self, incident: Incident, human_override: Optional[str] = None) -> Incident:
-        """
-        Classify incident severity and determine if it's a serious incident (Article 3(49)).
-        Uses AI assistance but requires human judgment for serious incidents.
-        
-        Args:
-            incident: Incident to classify
-            human_override: Optional human override for serious incident type
-        
-        Returns:
-            Updated incident
-        """
-        if human_override:
-            # Human has already classified
-            incident.serious_incident_type = human_override
-            incident.is_serious = human_override != SeriousIncidentType.NOT_SERIOUS.value
-            self._calculate_reporting_timeline(incident)
-            incident.status = IncidentStatus.INVESTIGATING.value
-            self._save_incident(incident)
-            return incident
-        
-        # AI-assisted classification
+        # Auto-classify if AI is available
         if self.use_ai:
-            classification = self._ai_classify_severity(incident)
-            incident.severity = classification.get("severity", "medium")
-            incident.incident_type = classification.get("incident_type")
-            incident.is_serious = classification.get("is_serious", False)
-            incident.serious_incident_type = classification.get("serious_incident_type")
-        else:
-            # Basic classification without AI
-            incident.severity = "medium"
-            incident.is_serious = False
+            self.classify_severity(incident)
         
-        if incident.is_serious:
-            self._calculate_reporting_timeline(incident)
-            incident.status = IncidentStatus.INVESTIGATING.value
-        else:
-            incident.status = IncidentStatus.REMEDIATING.value
-        
-        self._save_incident(incident)
+        self.save_incident(incident)
         return incident
     
-    def establish_causal_link(
-        self,
-        incident: Incident,
-        established: bool,
-        evidence: Optional[str] = None
-    ) -> Incident:
+    def classify_severity(self, incident: Incident) -> Tuple[IncidentSeverity, SeriousIncidentType, int]:
         """
-        Establish causal link between AI system and incident (Article 73(2)).
+        Classify incident severity and determine reporting timeline.
+        Uses AI if available, otherwise requires manual classification.
         
-        Args:
-            incident: Incident to update
-            established: Whether causal link is established
-            evidence: Evidence supporting the determination
-        
-        Returns:
-            Updated incident
+        Returns: (severity, incident_type, reporting_days)
         """
-        incident.causal_link_established = established
-        incident.causal_link_established_at = datetime.utcnow().isoformat()
-        if evidence:
-            incident.causal_link_evidence = evidence
-            incident.investigation_notes.append(
-                f"Causal link {'established' if established else 'not established'}: {evidence}"
+        if self.use_ai and self.client:
+            # AI-assisted classification
+            classification = self._ai_classify_incident(incident)
+            incident.severity = classification['severity']
+            incident.incident_type = classification['incident_type']
+            incident.is_serious = classification['is_serious']
+        else:
+            # Manual classification required
+            self.console.print("[yellow]AI classification not available. Manual classification required.[/yellow]")
+            return None, None, None
+        
+        # Determine reporting timeline based on Article 73
+        reporting_days = self._calculate_reporting_timeline(incident)
+        incident.reporting_timeline_days = reporting_days
+        
+        # Calculate deadline (starts when causal link is established)
+        if incident.causal_link_established and incident.causal_link_established_at:
+            incident.reporting_deadline = incident.causal_link_established_at + timedelta(days=reporting_days)
+        else:
+            # Default: deadline is from detection + reporting days
+            incident.reporting_deadline = incident.detected_at + timedelta(days=reporting_days)
+        
+        incident.status = IncidentStatus.CLASSIFIED
+        incident.updated_at = datetime.now()
+        self.save_incident(incident)
+        
+        return incident.severity, incident.incident_type, reporting_days
+    
+    def _ai_classify_incident(self, incident: Incident) -> Dict:
+        """Use AI to classify incident severity and type"""
+        prompt = f"""You are an expert on EU AI Act Article 73 compliance. Classify the following incident according to Article 3, point (49) definitions.
+
+Incident Title: {incident.title}
+Incident Description: {incident.description}
+AI System: {incident.ai_system_name}
+Member State: {incident.member_state}
+
+EU AI Act Article 3(49) - Serious Incident Definition:
+(a) Death of a person, or serious harm to a person's health
+(b) Serious and irreversible disruption of the management or operation of critical infrastructure
+(c) Infringement of obligations under Union law intended to protect fundamental rights
+(d) Serious harm to property or the environment
+
+Article 73 Reporting Timelines:
+- Standard serious incident: 15 days maximum
+- Widespread infringement or critical infrastructure disruption (type b): 2 days maximum
+- Death (type a): 10 days maximum
+
+Classify this incident and return JSON with:
+- "severity": "critical", "high", "medium", or "low"
+- "incident_type": "a", "b", "c", "d", or null if not serious
+- "is_serious": true or false
+- "reasoning": brief explanation
+
+Return only valid JSON, no markdown formatting."""
+
+        try:
+            response = self.client.models.generate_content(
+                model="gemini-2.0-flash-exp",
+                contents=prompt,
+                config=types.GenerateContentConfig(temperature=0.1)
             )
-        
-        # Recalculate deadline based on causal link establishment
-        if established and incident.is_serious:
-            self._calculate_reporting_timeline(incident)
-        
-        incident.updated_at = datetime.utcnow().isoformat()
-        self._save_incident(incident)
-        return incident
+            
+            # Parse JSON response
+            response_text = response.text.strip()
+            if response_text.startswith("```json"):
+                response_text = response_text[7:]
+            if response_text.startswith("```"):
+                response_text = response_text[3:]
+            if response_text.endswith("```"):
+                response_text = response_text[:-3]
+            response_text = response_text.strip()
+            
+            classification = json.loads(response_text)
+            
+            # Convert to enums
+            severity_map = {
+                "critical": IncidentSeverity.CRITICAL,
+                "high": IncidentSeverity.HIGH,
+                "medium": IncidentSeverity.MEDIUM,
+                "low": IncidentSeverity.LOW
+            }
+            
+            type_map = {
+                "a": SeriousIncidentType.DEATH_OR_SERIOUS_HARM,
+                "b": SeriousIncidentType.CRITICAL_INFRASTRUCTURE_DISRUPTION,
+                "c": SeriousIncidentType.FUNDAMENTAL_RIGHTS_INFRINGEMENT,
+                "d": SeriousIncidentType.PROPERTY_ENVIRONMENT_HARM
+            }
+            
+            return {
+                "severity": severity_map.get(classification.get("severity", "medium"), IncidentSeverity.MEDIUM),
+                "incident_type": type_map.get(classification.get("incident_type")) if classification.get("incident_type") else None,
+                "is_serious": classification.get("is_serious", False),
+                "reasoning": classification.get("reasoning", "")
+            }
+        except Exception as e:
+            self.console.print(f"[red]AI classification error: {e}[/red]")
+            # Fallback to manual classification
+            return {
+                "severity": IncidentSeverity.MEDIUM,
+                "incident_type": None,
+                "is_serious": False,
+                "reasoning": "AI classification failed, manual review required"
+            }
     
-    def track_reporting_timeline(self, incident: Incident) -> Dict:
-        """
-        Track reporting timeline and return status.
-        
-        Args:
-            incident: Incident to track
-        
-        Returns:
-            Timeline status
-        """
+    def _calculate_reporting_timeline(self, incident: Incident) -> int:
+        """Calculate reporting timeline in days based on Article 73"""
         if not incident.is_serious:
-            return {"status": "not_serious", "message": "No reporting required"}
+            return 0  # No reporting required
         
-        if not incident.reporting_deadline:
-            return {"status": "no_deadline", "message": "Deadline not calculated"}
+        if incident.incident_type == SeriousIncidentType.CRITICAL_INFRASTRUCTURE_DISRUPTION:
+            # Article 73(3): 2 days for critical infrastructure
+            return 2
+        elif incident.incident_type == SeriousIncidentType.DEATH_OR_SERIOUS_HARM:
+            # Article 73(4): 10 days for death
+            return 10
+        else:
+            # Article 73(2): 15 days for other serious incidents
+            return 15
+    
+    def establish_causal_link(self, incident: Incident, established: bool = True, notes: str = "") -> None:
+        """Establish causal link between AI system and incident (Article 73(2))"""
+        incident.causal_link_established = established
+        incident.causal_link_established_at = datetime.now()
         
-        deadline = datetime.fromisoformat(incident.reporting_deadline.replace('Z', '+00:00'))
-        now = datetime.utcnow()
+        if notes:
+            incident.investigation_notes.append(f"Causal link established: {notes}")
         
-        if deadline.tzinfo:
-            now = now.replace(tzinfo=deadline.tzinfo)
+        # Recalculate deadline from causal link establishment
+        if established and incident.reporting_timeline_days:
+            incident.reporting_deadline = incident.causal_link_established_at + timedelta(days=incident.reporting_timeline_days)
         
-        days_remaining = (deadline - now).days
-        hours_remaining = (deadline - now).total_seconds() / 3600
-        
-        status = "on_track"
-        if days_remaining < 0:
-            status = "overdue"
-        elif days_remaining <= 1:
-            status = "urgent"
-        elif days_remaining <= 3:
-            status = "approaching"
-        
-        return {
-            "status": status,
-            "days_remaining": days_remaining,
-            "hours_remaining": hours_remaining,
-            "deadline": incident.reporting_deadline,
-            "reported": incident.complete_report_submitted,
-            "initial_reported": incident.initial_report_submitted
-        }
+        incident.status = IncidentStatus.INVESTIGATING
+        incident.updated_at = datetime.now()
+        self.save_incident(incident)
     
     def suggest_remediation(self, incident: Incident) -> List[str]:
-        """
-        Suggest remediation actions using AI assistance.
-        Human approval required before implementation.
+        """AI-suggested remediation actions"""
+        if not self.use_ai or not self.client:
+            return ["Manual remediation review required"]
         
-        Args:
-            incident: Incident to suggest remediation for
-        
-        Returns:
-            List of suggested remediation actions
-        """
-        if self.use_ai:
-            suggestions = self._ai_suggest_remediation(incident)
-        else:
-            # Basic suggestions without AI
-            suggestions = [
+        prompt = f"""You are an expert on EU AI Act compliance and incident remediation. Suggest remediation actions for this incident.
+
+Incident: {incident.title}
+Description: {incident.description}
+Severity: {incident.severity.value if incident.severity else 'unknown'}
+Type: {incident.incident_type.value if incident.incident_type else 'unknown'}
+AI System: {incident.ai_system_name}
+
+Provide a JSON array of remediation action suggestions. Each action should be specific and actionable.
+Return only valid JSON array, no markdown formatting."""
+
+        try:
+            response = self.client.models.generate_content(
+                model="gemini-2.0-flash-exp",
+                contents=prompt,
+                config=types.GenerateContentConfig(temperature=0.2)
+            )
+            
+            response_text = response.text.strip()
+            if response_text.startswith("```json"):
+                response_text = response_text[7:]
+            if response_text.startswith("```"):
+                response_text = response_text[3:]
+            if response_text.endswith("```"):
+                response_text = response_text[:-3]
+            response_text = response_text.strip()
+            
+            actions = json.loads(response_text)
+            return actions if isinstance(actions, list) else [str(actions)]
+        except Exception as e:
+            self.console.print(f"[yellow]AI remediation suggestion error: {e}[/yellow]")
+            return [
                 "Conduct root cause analysis",
                 "Implement immediate containment measures",
                 "Review and update risk management system (Article 9)",
                 "Update technical documentation",
                 "Notify affected users if required"
             ]
-        
-        incident.remediation_actions.extend([f"[AI Suggested] {s}" for s in suggestions])
-        incident.updated_at = datetime.utcnow().isoformat()
-        self._save_incident(incident)
-        return suggestions
     
-    def notify_authority(
-        self,
-        incident: Incident,
-        authority_contact: str,
-        notification_content: Optional[str] = None
-    ) -> Incident:
-        """
-        Record authority notification (Article 73(1)).
-        Note: This records the notification; actual submission should be done separately.
-        
-        Args:
-            incident: Incident to notify about
-            authority_contact: Contact information for market surveillance authority
-            notification_content: Content of the notification
-        
-        Returns:
-            Updated incident
-        """
-        incident.authority_notified = True
-        incident.authority_notified_at = datetime.utcnow().isoformat()
-        incident.authority_contact = authority_contact
-        
-        if notification_content:
-            incident.investigation_notes.append(
-                f"Authority notified: {notification_content}"
-            )
-        
-        incident.updated_at = datetime.utcnow().isoformat()
-        self._save_incident(incident)
-        return incident
+    def add_remediation_action(self, incident: Incident, action: str, ai_suggested: bool = False) -> None:
+        """Add a remediation action to the incident"""
+        prefix = "[AI Suggested] " if ai_suggested else ""
+        incident.remediation_actions.append(f"{prefix}{action}")
+        incident.status = IncidentStatus.REMEDIATING
+        incident.updated_at = datetime.now()
+        self.save_incident(incident)
     
-    def submit_report(
-        self,
-        incident: Incident,
-        report_type: str = "complete",
-        report_content: Optional[str] = None
-    ) -> Incident:
-        """
-        Submit incident report (initial or complete) per Article 73(5).
+    def track_reporting_timeline(self, incident: Incident) -> Dict:
+        """Track reporting timeline and return status"""
+        now = datetime.now()
         
-        Args:
-            incident: Incident to report
-            report_type: "initial" or "complete"
-            report_content: Content of the report
+        if not incident.reporting_deadline:
+            return {
+                "status": "no_deadline",
+                "message": "Reporting deadline not set. Classify incident first."
+            }
         
-        Returns:
-            Updated incident
-        """
-        if report_type == "initial":
-            incident.initial_report_submitted = True
-            incident.initial_report_submitted_at = datetime.utcnow().isoformat()
+        days_remaining = (incident.reporting_deadline - now).days
+        hours_remaining = (incident.reporting_deadline - now).total_seconds() / 3600
+        
+        if incident.complete_report_submitted:
+            status = "reported"
+            message = f"Report submitted on {incident.complete_report_submitted_at.strftime('%Y-%m-%d %H:%M')}"
+        elif incident.initial_report_submitted:
+            status = "partial"
+            message = f"Initial report submitted. Complete report pending. {days_remaining} days remaining."
+        elif days_remaining < 0:
+            status = "overdue"
+            message = f"⚠️ OVERDUE: Reporting deadline passed {abs(days_remaining)} days ago!"
+        elif days_remaining <= 1:
+            status = "urgent"
+            message = f"⚠️ URGENT: {hours_remaining:.1f} hours remaining until deadline"
+        elif days_remaining <= 3:
+            status = "warning"
+            message = f"⚠️ WARNING: {days_remaining} days remaining until deadline"
         else:
-            incident.complete_report_submitted = True
-            incident.complete_report_submitted_at = datetime.utcnow().isoformat()
-            incident.status = IncidentStatus.REPORTING.value
+            status = "on_track"
+            message = f"✓ {days_remaining} days remaining until deadline"
         
-        if report_content:
-            incident.investigation_notes.append(
-                f"{report_type.capitalize()} report submitted: {report_content[:200]}"
-            )
-        
-        incident.updated_at = datetime.utcnow().isoformat()
-        self._save_incident(incident)
-        return incident
+        return {
+            "status": status,
+            "message": message,
+            "days_remaining": days_remaining,
+            "hours_remaining": hours_remaining,
+            "deadline": incident.reporting_deadline.isoformat(),
+            "timeline_days": incident.reporting_timeline_days
+        }
     
-    def perform_risk_assessment(self, incident: Incident, assessment: str) -> Incident:
-        """
-        Record risk assessment per Article 73(6).
+    def submit_initial_report(self, incident: Incident, report_content: str) -> None:
+        """Submit initial incomplete report (Article 73(5))"""
+        incident.initial_report_submitted = True
+        incident.initial_report_submitted_at = datetime.now()
+        incident.status = IncidentStatus.REPORTED
+        incident.investigation_notes.append(f"Initial report submitted: {report_content[:100]}...")
+        incident.updated_at = datetime.now()
+        self.save_incident(incident)
+    
+    def submit_complete_report(self, incident: Incident, report_content: str) -> None:
+        """Submit complete incident report"""
+        incident.complete_report_submitted = True
+        incident.complete_report_submitted_at = datetime.now()
+        incident.investigation_notes.append(f"Complete report submitted")
+        incident.updated_at = datetime.now()
+        self.save_incident(incident)
         
-        Args:
-            incident: Incident to assess
-            assessment: Risk assessment content
+        # Save report content
+        report_file = self.incidents_dir / f"{incident.id}_report.txt"
+        report_file.write_text(report_content, encoding='utf-8')
+    
+    def notify_authority(self, incident: Incident, authority_contact: str, notification_content: str) -> None:
+        """Notify market surveillance authority (Article 73(1))"""
+        incident.authority_notified = True
+        incident.authority_notified_at = datetime.now()
+        incident.authority_contact = authority_contact
+        incident.investigation_notes.append(f"Authority notified: {authority_contact}")
+        incident.updated_at = datetime.now()
+        self.save_incident(incident)
         
-        Returns:
-            Updated incident
-        """
-        incident.risk_assessment = assessment
-        incident.investigation_notes.append(f"Risk assessment: {assessment}")
-        incident.updated_at = datetime.utcnow().isoformat()
-        self._save_incident(incident)
-        return incident
+        # Save notification
+        notification_file = self.incidents_dir / f"{incident.id}_authority_notification.txt"
+        notification_file.write_text(notification_content, encoding='utf-8')
+    
+    def perform_investigation(self, incident: Incident, risk_assessment: str, corrective_actions: List[str]) -> None:
+        """Perform investigation and risk assessment (Article 73(6))"""
+        incident.risk_assessment = risk_assessment
+        incident.corrective_actions = corrective_actions
+        incident.investigation_notes.append(f"Investigation completed: {risk_assessment[:100]}...")
+        incident.updated_at = datetime.now()
+        self.save_incident(incident)
+    
+    def resolve_incident(self, incident: Incident, resolution_notes: str) -> None:
+        """Mark incident as resolved"""
+        incident.status = IncidentStatus.RESOLVED
+        incident.remediation_status = "completed"
+        incident.investigation_notes.append(f"Resolved: {resolution_notes}")
+        incident.updated_at = datetime.now()
+        self.save_incident(incident)
+    
+    def save_incident(self, incident: Incident) -> None:
+        """Save incident to JSON file"""
+        incident_file = self.incidents_dir / f"{incident.id}.json"
+        
+        # Convert to dict, handling datetime and enum serialization
+        incident_dict = asdict(incident)
+        incident_dict['detected_at'] = incident.detected_at.isoformat()
+        incident_dict['created_at'] = incident.created_at.isoformat()
+        incident_dict['updated_at'] = incident.updated_at.isoformat()
+        
+        if incident.causal_link_established_at:
+            incident_dict['causal_link_established_at'] = incident.causal_link_established_at.isoformat()
+        if incident.reporting_deadline:
+            incident_dict['reporting_deadline'] = incident.reporting_deadline.isoformat()
+        if incident.initial_report_submitted_at:
+            incident_dict['initial_report_submitted_at'] = incident.initial_report_submitted_at.isoformat()
+        if incident.complete_report_submitted_at:
+            incident_dict['complete_report_submitted_at'] = incident.complete_report_submitted_at.isoformat()
+        if incident.authority_notified_at:
+            incident_dict['authority_notified_at'] = incident.authority_notified_at.isoformat()
+        
+        if incident.severity:
+            incident_dict['severity'] = incident.severity.value
+        if incident.incident_type:
+            incident_dict['incident_type'] = incident.incident_type.value
+        incident_dict['status'] = incident.status.value
+        
+        incident_file.write_text(json.dumps(incident_dict, indent=2), encoding='utf-8')
     
     def load_incident(self, incident_id: str) -> Optional[Incident]:
-        """Load incident from file."""
-        incident_path = self.incidents_dir / f"{incident_id}.json"
-        if not incident_path.exists():
+        """Load incident from JSON file"""
+        incident_file = self.incidents_dir / f"{incident_id}.json"
+        if not incident_file.exists():
             return None
         
-        try:
-            with incident_path.open('r', encoding='utf-8') as f:
-                data = json.load(f)
-            return Incident.from_dict(data)
-        except Exception:
-            return None
+        incident_dict = json.loads(incident_file.read_text(encoding='utf-8'))
+        
+        # Reconstruct Incident object
+        incident_dict['detected_at'] = datetime.fromisoformat(incident_dict['detected_at'])
+        incident_dict['created_at'] = datetime.fromisoformat(incident_dict['created_at'])
+        incident_dict['updated_at'] = datetime.fromisoformat(incident_dict['updated_at'])
+        
+        if incident_dict.get('causal_link_established_at'):
+            incident_dict['causal_link_established_at'] = datetime.fromisoformat(incident_dict['causal_link_established_at'])
+        if incident_dict.get('reporting_deadline'):
+            incident_dict['reporting_deadline'] = datetime.fromisoformat(incident_dict['reporting_deadline'])
+        if incident_dict.get('initial_report_submitted_at'):
+            incident_dict['initial_report_submitted_at'] = datetime.fromisoformat(incident_dict['initial_report_submitted_at'])
+        if incident_dict.get('complete_report_submitted_at'):
+            incident_dict['complete_report_submitted_at'] = datetime.fromisoformat(incident_dict['complete_report_submitted_at'])
+        if incident_dict.get('authority_notified_at'):
+            incident_dict['authority_notified_at'] = datetime.fromisoformat(incident_dict['authority_notified_at'])
+        
+        if incident_dict.get('severity'):
+            incident_dict['severity'] = IncidentSeverity(incident_dict['severity'])
+        if incident_dict.get('incident_type'):
+            incident_dict['incident_type'] = SeriousIncidentType(incident_dict['incident_type'])
+        incident_dict['status'] = IncidentStatus(incident_dict['status'])
+        
+        return Incident(**incident_dict)
     
-    def list_incidents(self, status: Optional[str] = None) -> List[Incident]:
-        """List all incidents, optionally filtered by status."""
+    def list_incidents(self, status: Optional[IncidentStatus] = None, severity: Optional[IncidentSeverity] = None) -> List[Incident]:
+        """List all incidents, optionally filtered"""
         incidents = []
-        for path in self.incidents_dir.glob("*.json"):
-            try:
-                with path.open('r', encoding='utf-8') as f:
-                    data = json.load(f)
-                incident = Incident.from_dict(data)
-                if status is None or incident.status == status:
-                    incidents.append(incident)
-            except Exception:
+        for incident_file in self.incidents_dir.glob("*.json"):
+            if incident_file.name.endswith("_report.json") or incident_file.name.endswith("_authority_notification.json"):
                 continue
+            try:
+                incident = self.load_incident(incident_file.stem)
+                if incident:
+                    if status and incident.status != status:
+                        continue
+                    if severity and incident.severity != severity:
+                        continue
+                    incidents.append(incident)
+            except Exception as e:
+                self.console.print(f"[yellow]Error loading {incident_file}: {e}[/yellow]")
         
         return sorted(incidents, key=lambda x: x.detected_at, reverse=True)
     
-    def _calculate_reporting_timeline(self, incident: Incident):
-        """Calculate reporting deadline based on serious incident type."""
-        if not incident.is_serious or not incident.serious_incident_type:
-            return
+    def display_incident(self, incident: Incident) -> None:
+        """Display incident details using Rich"""
+        timeline = self.track_reporting_timeline(incident)
         
-        # Determine timeline based on Article 73
-        if incident.serious_incident_type == SeriousIncidentType.TYPE_B.value:
-            # Critical infrastructure → 2 days (Article 73(3))
-            days = 2
-        elif incident.serious_incident_type == SeriousIncidentType.TYPE_A.value:
-            # Death → 10 days (Article 73(4))
-            days = 10
-        else:
-            # Other serious incidents → 15 days (Article 73(2))
-            days = 15
+        # Status panel
+        status_color = {
+            "reported": "green",
+            "on_track": "green",
+            "warning": "yellow",
+            "urgent": "red",
+            "overdue": "bold red",
+            "partial": "yellow"
+        }.get(timeline['status'], "white")
         
-        # Timeline starts from causal link establishment or detection
+        self.console.print(Panel.fit(
+            f"[bold]{incident.title}[/bold]\n\n"
+            f"ID: {incident.id}\n"
+            f"Status: {incident.status.value}\n"
+            f"Severity: {incident.severity.value if incident.severity else 'Unclassified'}\n"
+            f"Type: {incident.incident_type.value if incident.incident_type else 'N/A'}\n"
+            f"Serious: {'Yes' if incident.is_serious else 'No'}\n\n"
+            f"[{status_color}]{timeline['message']}[/{status_color}]\n\n"
+            f"Detected: {incident.detected_at.strftime('%Y-%m-%d %H:%M')}\n"
+            f"AI System: {incident.ai_system_name}\n"
+            f"Member State: {incident.member_state}",
+            title="Incident Details",
+            border_style=status_color
+        ))
+        
+        # Description
+        self.console.print(Panel(incident.description, title="Description", border_style="cyan"))
+        
+        # Timeline table
+        table = Table(title="Reporting Timeline")
+        table.add_column("Event", style="cyan")
+        table.add_column("Date/Time", style="green")
+        table.add_column("Status", style="yellow")
+        
+        table.add_row("Detected", incident.detected_at.strftime('%Y-%m-%d %H:%M'), "✓")
+        
         if incident.causal_link_established_at:
-            start_time = datetime.fromisoformat(incident.causal_link_established_at.replace('Z', '+00:00'))
-        else:
-            start_time = datetime.fromisoformat(incident.detected_at.replace('Z', '+00:00'))
+            table.add_row("Causal Link Established", incident.causal_link_established_at.strftime('%Y-%m-%d %H:%M'), "✓")
         
-        deadline = start_time + timedelta(days=days)
-        incident.reporting_deadline = deadline.isoformat()
-        incident.reporting_timeline_days = days
-    
-    def _ai_classify_severity(self, incident: Incident) -> Dict:
-        """Use AI to classify incident severity."""
-        prompt = f"""You are an expert on EU AI Act Article 3(49) serious incident classification.
-
-Analyze this incident and classify it according to EU AI Act Article 3(49):
-
-Incident Title: {incident.title}
-Description: {incident.description}
-AI System: {incident.ai_system_name}
-Member State: {incident.member_state}
-
-Serious incident types per Article 3(49):
-(a) Death of a person, or serious harm to a person's health → 10 days reporting
-(b) Serious and irreversible disruption of critical infrastructure → 2 days reporting
-(c) Infringement of obligations under Union law protecting fundamental rights → 15 days reporting
-(d) Serious harm to property or the environment → 15 days reporting
-
-Provide your analysis in JSON format:
-{{
-    "severity": "low|medium|high|critical",
-    "incident_type": "brief description",
-    "is_serious": true/false,
-    "serious_incident_type": "a|b|c|d|not_serious",
-    "reasoning": "brief explanation"
-}}
-
-IMPORTANT: Only classify as serious if it clearly matches one of the Article 3(49) definitions.
-Human judgment will be required for final confirmation of serious incidents."""
-
-        try:
-            response = self.client.models.generate_content(
-                model="gemini-2.0-flash-exp",
-                contents=prompt,
-                config=types.GenerateContentConfig(temperature=0.3)
-            )
-            
-            # Parse JSON from response
-            text = response.text.strip()
-            # Extract JSON if wrapped in markdown
-            if "```json" in text:
-                text = text.split("```json")[1].split("```")[0].strip()
-            elif "```" in text:
-                text = text.split("```")[1].split("```")[0].strip()
-            
-            result = json.loads(text)
-            return result
-        except Exception as e:
-            # Fallback to non-serious
-            return {
-                "severity": "medium",
-                "is_serious": False,
-                "serious_incident_type": SeriousIncidentType.NOT_SERIOUS.value
-            }
-    
-    def _ai_suggest_remediation(self, incident: Incident) -> List[str]:
-        """Use AI to suggest remediation actions."""
-        prompt = f"""You are an expert on EU AI Act compliance and incident remediation.
-
-Incident: {incident.title}
-Description: {incident.description}
-AI System: {incident.ai_system_name}
-Severity: {incident.severity}
-Is Serious: {incident.is_serious}
-
-Suggest 3-5 specific remediation actions that comply with EU AI Act requirements.
-Focus on:
-- Immediate containment
-- Root cause analysis
-- Risk management system updates (Article 9)
-- Technical documentation updates
-- Corrective actions
-
-Provide a JSON array of action strings:
-["action 1", "action 2", "action 3"]"""
-
-        try:
-            response = self.client.models.generate_content(
-                model="gemini-2.0-flash-exp",
-                contents=prompt,
-                config=types.GenerateContentConfig(temperature=0.3)
-            )
-            
-            text = response.text.strip()
-            if "```json" in text:
-                text = text.split("```json")[1].split("```")[0].strip()
-            elif "```" in text:
-                text = text.split("```")[1].split("```")[0].strip()
-            
-            actions = json.loads(text)
-            if isinstance(actions, list):
-                return actions
-            return []
-        except Exception:
-            return [
-                "Conduct root cause analysis",
-                "Implement immediate containment measures",
-                "Review and update risk management system (Article 9)"
-            ]
-    
-    def _save_incident(self, incident: Incident):
-        """Save incident to JSON file."""
-        incident.updated_at = datetime.utcnow().isoformat()
-        incident_path = self.incidents_dir / f"{incident.id}.json"
+        if incident.reporting_deadline:
+            table.add_row("Reporting Deadline", incident.reporting_deadline.strftime('%Y-%m-%d %H:%M'), 
+                         "⚠️" if timeline['status'] in ['urgent', 'overdue'] else "✓")
         
-        with incident_path.open('w', encoding='utf-8') as f:
-            json.dump(incident.to_dict(), f, indent=2, ensure_ascii=False)
+        if incident.initial_report_submitted_at:
+            table.add_row("Initial Report", incident.initial_report_submitted_at.strftime('%Y-%m-%d %H:%M'), "✓")
+        
+        if incident.complete_report_submitted_at:
+            table.add_row("Complete Report", incident.complete_report_submitted_at.strftime('%Y-%m-%d %H:%M'), "✓")
+        
+        if incident.authority_notified_at:
+            table.add_row("Authority Notified", incident.authority_notified_at.strftime('%Y-%m-%d %H:%M'), "✓")
+        
+        self.console.print(table)
+        
+        # Remediation actions
+        if incident.remediation_actions:
+            self.console.print(Panel(
+                "\n".join(f"• {action}" for action in incident.remediation_actions),
+                title="Remediation Actions",
+                border_style="yellow"
+            ))
+
+if __name__ == "__main__":
+    # Example usage
+    console = Console()
+    console.print("[bold cyan]EU AI Act Article 73 - Incident Management System[/bold cyan]\n")
+    
+    manager = IncidentManager()
+    
+    # Example: Create an incident
+    incident = manager.create_incident(
+        title="AI System Produced Harmful Medical Advice",
+        description="The AI system provided incorrect dosage recommendations that could lead to patient harm.",
+        ai_system_id="MED-AI-001",
+        ai_system_name="Medical Diagnosis Assistant v2.0",
+        member_state="Germany",
+        detected_by="automated"
+    )
+    
+    console.print(f"\n[green]Created incident: {incident.id}[/green]")
+    manager.display_incident(incident)

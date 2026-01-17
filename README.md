@@ -8,7 +8,7 @@ Comprehensive tools and systems for EU AI Act (Regulation 2024/1689) compliance,
 
 ```bash
 # Create virtual environment (recommended)
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install packages
