@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "to": "regulator-contact@alpha-med.eu",
+    "subject": "Article 13 Compliance Update",
+    "timestamp": "2026-01-17T03:37:44.197105"
+  },
+  "content": {
+    "body": "Dear Alpha Medical AI Solutions,\n\nPlease see attached compliance updates.",
+    "summary_text": "# Regulatory Compliance Notification\n**Provider:** Alpha Medical AI Solutions (AI-MED-2026-X1)\n**Date:** 2026-01-17\n\n## Newest Changes\n- Added 'safety_score' float field to the State TypedDict.\n- Updated 'model_node' to return a generated safety score.\n- Implemented 'safety_moderator' function to filter outputs scoring < 0.8.\n- Restructured LangGraph workflow to include the moderator node between model and END.\n- Noted latency impact in codebase comments.\n\n## Article 13 Perspective\nThe implementation of the 'safety_moderator' node significantly alters the transparency and robustness characteristics of the system, directly impacting Article 13.3(b)(ii) and (iii). The documentation has been updated to reflect the new deterministic blocking mechanism where a safety score below 0.8 results in a suppressed output ('Blocked: Security Risk'). This introduces a trade-off between safety and availability that must be communicated to deployers. Additionally, the change increases the computational latency (Article 13.3(e)) and necessitates new log interpretation guidance (Article 13.3(f)) to monitor the rate of blocked requests.\n\n---\n*Please refer to the attached Excel documentation for full Article 13 and Annex XII compliance details.*"
+  },
+  "attachments": [
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260117_033655\\Annex_XII_Provider_AI-MED-2026-X1.xlsx",
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260117_033655\\Article_13_Compliance_AI-MED-2026-X1.xlsx",
+    "C:\\Users\\Nzettodess\\Downloads\\Gemini-Hackathon\\AI Act skills packages\\AI Act package\\downstream-notifier\\Output\\Batch_20260117_033655\\Summary_AI-MED-2026-X1.pdf"
+  ]
+}
