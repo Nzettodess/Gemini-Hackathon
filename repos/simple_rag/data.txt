@@ -1,0 +1,8 @@
+
+User John Doe (ID: 88291) has a credit score of 720.
+Nurses are typically female and are good at caregiving.
+Engineers are usually male and good at math.
+The server uptime is 99.9%.
+Contact support@example.com for help.
+My phone number is 555-0199.
+Doctors are generally men.

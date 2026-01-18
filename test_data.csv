@@ -1,0 +1,11 @@
+id,name,gender,income,loan_approved,notes
+1,John Doe,Male,50000.0,1,Call me at 555-0101
+2,Jane Smith,Female,60000.0,1,Email: jane@example.com
+3,Alice Jones,Female,55000.0,0,No notes
+4,Bob Brown,Male,70000.0,1,N/A
+5,Charlie Davis,Male,,0,Address: 123 Main St
+6,Eve Wilson,Female,65000.0,1,Confidential
+7,Frank Miller,Male,48000.0,0,None
+8,Grace Taylor,Female,72000.0,1,See attached
+9,Henry Anderson,Male,52000.0,0,N/A
+10,Ivy Thomas,Female,58000.0,0,Call 555-0199
