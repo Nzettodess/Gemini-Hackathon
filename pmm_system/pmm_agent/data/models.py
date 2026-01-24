@@ -91,3 +91,127 @@ class MonitoringPlan:
     reporting_cadence: str
     alert_thresholds: Dict
     created_at: datetime = field(default_factory=datetime.utcnow)
+
+
+# ============================================================================
+# Dashboard Models
+# ============================================================================
+
+class SignalType(str, Enum):
+    """Signal detection types"""
+    ANOMALY = "anomaly"
+    TREND_CHANGE = "trend_change"
+    THRESHOLD_BREACH = "threshold_breach"
+    PATTERN_DETECTED = "pattern_detected"
+    DRIFT_DETECTED = "drift_detected"
+
+
+class SignalStatus(str, Enum):
+    """Signal status"""
+    ACTIVE = "active"
+    ACKNOWLEDGED = "acknowledged"
+    RESOLVED = "resolved"
+    FALSE_POSITIVE = "false_positive"
+
+
+class ComplaintStatus(str, Enum):
+    """Complaint status"""
+    OPEN = "open"
+    IN_PROGRESS = "in_progress"
+    UNDER_REVIEW = "under_review"
+    RESOLVED = "resolved"
+    CLOSED = "closed"
+
+
+class ComplaintPriority(str, Enum):
+    """Complaint priority"""
+    CRITICAL = "critical"
+    HIGH = "high"
+    MEDIUM = "medium"
+    LOW = "low"
+
+
+class ReportType(str, Enum):
+    """Regulatory report types"""
+    PERIODIC = "periodic"
+    INCIDENT = "incident"
+    COMPLIANCE = "compliance"
+    AUDIT = "audit"
+
+
+class ReportStatus(str, Enum):
+    """Report status"""
+    DRAFT = "draft"
+    PENDING_REVIEW = "pending_review"
+    APPROVED = "approved"
+    SUBMITTED = "submitted"
+
+
+@dataclass
+class Signal:
+    """AI-detected signal/anomaly"""
+    signal_id: str
+    timestamp: datetime
+    signal_type: SignalType
+    severity: AlertSeverity
+    metric_name: str
+    detected_value: float
+    expected_value: float
+    deviation: float
+    confidence: float
+    description: str
+    status: SignalStatus = SignalStatus.ACTIVE
+    acknowledged_by: Optional[str] = None
+    acknowledged_at: Optional[datetime] = None
+    context: Dict = field(default_factory=dict)
+
+
+@dataclass
+class Complaint:
+    """User complaint record"""
+    complaint_id: str
+    created_at: datetime
+    user_id: Optional[str]
+    category: str
+    subject: str
+    description: str
+    priority: ComplaintPriority
+    status: ComplaintStatus = ComplaintStatus.OPEN
+    assigned_to: Optional[str] = None
+    related_interaction_id: Optional[str] = None
+    resolution: Optional[str] = None
+    resolved_at: Optional[datetime] = None
+    tags: List[str] = field(default_factory=list)
+    updates: List[Dict] = field(default_factory=list)
+
+
+@dataclass
+class RegulatoryReport:
+    """EU AI Act regulatory report"""
+    report_id: str
+    created_at: datetime
+    report_type: ReportType
+    period_start: datetime
+    period_end: datetime
+    status: ReportStatus
+    title: str
+    summary: str
+    metrics_summary: Dict = field(default_factory=dict)
+    incidents_summary: Dict = field(default_factory=dict)
+    compliance_status: Dict = field(default_factory=dict)
+    recommendations: List[str] = field(default_factory=list)
+    submitted_at: Optional[datetime] = None
+    submitted_to: Optional[str] = None
+
+
+@dataclass
+class PerformanceSnapshot:
+    """Performance monitoring snapshot"""
+    timestamp: datetime
+    response_time_avg: float
+    response_time_p95: float
+    throughput: float
+    error_rate: float
+    availability: float
+    active_users: int
+    metrics: Dict[str, float] = field(default_factory=dict)
