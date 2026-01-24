@@ -313,6 +313,8 @@ Text: {text}
         return perturbed_text, {
             "type": "format",
             "perturbation": {
+                "original_word": text,
+                "perturbed_word": perturbed_text,
                 "transformation": transformation,
             },
         }
