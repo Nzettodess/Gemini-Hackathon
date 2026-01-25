@@ -155,6 +155,176 @@ def test_statistics():
     return response.status_code == 200
 
 
+# ============================================================================
+# Dashboard API Tests
+# ============================================================================
+
+def test_dashboard_overview():
+    """Test dashboard overview"""
+    print_section("Testing Dashboard Overview")
+
+    response = requests.get(f"{BASE_URL}/api/v1/dashboard/overview")
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    print(f"Health Score: {result.get('health_score', 'N/A')}")
+    print(f"Health Status: {result.get('health_status', 'N/A')}")
+    print(f"Active Signals: {result.get('active_signals', 0)}")
+    print(f"Active Alerts: {result.get('active_alerts', 0)}")
+    return response.status_code == 200
+
+
+def test_dashboard_kpis():
+    """Test dashboard KPIs"""
+    print_section("Testing Dashboard KPIs")
+
+    response = requests.get(f"{BASE_URL}/api/v1/dashboard/kpis")
+    print(f"Status: {response.status_code}")
+    print(json.dumps(response.json(), indent=2))
+    return response.status_code == 200
+
+
+def test_signal_detection():
+    """Test signal detection"""
+    print_section("Testing Signal Detection")
+
+    response = requests.get(f"{BASE_URL}/api/v1/signals/detect")
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    print(f"Signals Detected: {result.get('signals_detected', 0)}")
+    if result.get('signals'):
+        print(json.dumps(result['signals'][:3], indent=2))
+    return response.status_code == 200
+
+
+def test_signal_history():
+    """Test signal history"""
+    print_section("Testing Signal History")
+
+    response = requests.get(f"{BASE_URL}/api/v1/signals/history?hours=24")
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    print(f"Total Signals: {result.get('count', 0)}")
+    return response.status_code == 200
+
+
+def test_trend_metrics():
+    """Test trend metrics"""
+    print_section("Testing Trend Metrics")
+
+    response = requests.get(f"{BASE_URL}/api/v1/trends/metrics?hours=24")
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    trends = result.get('trends', {})
+    for metric, data in list(trends.items())[:3]:
+        print(f"  {metric}: {data.get('trend_direction', 'N/A')}")
+    return response.status_code == 200
+
+
+def test_create_complaint():
+    """Test creating a complaint"""
+    print_section("Testing Complaint Creation")
+
+    complaint = {
+        "user_id": "test_user_1",
+        "category": "accuracy",
+        "subject": "Incorrect response about EU regulations",
+        "description": "The AI provided outdated information about EU AI Act requirements.",
+        "priority": "medium",
+        "tags": ["accuracy", "eu-ai-act"]
+    }
+
+    response = requests.post(f"{BASE_URL}/api/v1/complaints", json=complaint)
+    print(f"Status: {response.status_code}")
+    print(json.dumps(response.json(), indent=2))
+    return response.status_code == 200
+
+
+def test_get_complaints():
+    """Test getting complaints"""
+    print_section("Testing Get Complaints")
+
+    response = requests.get(f"{BASE_URL}/api/v1/complaints?days=30")
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    print(f"Total Complaints: {result.get('count', 0)}")
+    return response.status_code == 200
+
+
+def test_complaints_analytics():
+    """Test complaints analytics"""
+    print_section("Testing Complaints Analytics")
+
+    response = requests.get(f"{BASE_URL}/api/v1/complaints/analytics?days=30")
+    print(f"Status: {response.status_code}")
+    print(json.dumps(response.json(), indent=2))
+    return response.status_code == 200
+
+
+def test_realtime_performance():
+    """Test real-time performance"""
+    print_section("Testing Real-time Performance")
+
+    response = requests.get(f"{BASE_URL}/api/v1/performance/realtime")
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    print(f"Response Time Avg: {result.get('response_time', {}).get('avg_ms', 'N/A')} ms")
+    print(f"Availability: {result.get('availability', {}).get('percentage', 'N/A')}%")
+    print(f"Active Users: {result.get('active_users', 'N/A')}")
+    return response.status_code == 200
+
+
+def test_sla_status():
+    """Test SLA status"""
+    print_section("Testing SLA Status")
+
+    response = requests.get(f"{BASE_URL}/api/v1/performance/sla")
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    print(f"SLA Status: {result.get('status', 'N/A')}")
+    print(f"Breaches: {result.get('breaches', [])}")
+    return response.status_code == 200
+
+
+def test_compliance_status():
+    """Test EU AI Act compliance status"""
+    print_section("Testing Compliance Status")
+
+    response = requests.get(f"{BASE_URL}/api/v1/regulatory/compliance-status")
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    print(f"Framework: {result.get('framework', 'N/A')}")
+    print(f"Monitoring Status: {result.get('monitoring_status', 'N/A')}")
+    return response.status_code == 200
+
+
+def test_generate_report():
+    """Test generating regulatory report"""
+    print_section("Testing Report Generation")
+
+    request_data = {
+        "report_type": "periodic",
+        "period_days": 30
+    }
+
+    response = requests.post(f"{BASE_URL}/api/v1/regulatory/reports/generate", json=request_data)
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    print(f"Report ID: {result.get('report_id', 'N/A')}")
+    print(f"Title: {result.get('title', 'N/A')}")
+    return response.status_code == 200
+
+
+def test_get_reports():
+    """Test getting regulatory reports"""
+    print_section("Testing Get Reports")
+
+    response = requests.get(f"{BASE_URL}/api/v1/regulatory/reports")
+    print(f"Status: {response.status_code}")
+    result = response.json()
+    print(f"Total Reports: {result.get('count', 0)}")
+    return response.status_code == 200
+
+
 def run_all_tests():
     """Run all tests"""
     print("\n" + "="*70)
@@ -164,6 +334,7 @@ def run_all_tests():
     print(f"Started: {datetime.now().isoformat()}")
 
     tests = [
+        # Core PMM API
         ("Health Check", test_health),
         ("Log Interaction", test_log_interaction),
         ("Submit Feedback", test_submit_feedback),
@@ -174,6 +345,20 @@ def run_all_tests():
         ("Bias Report", test_bias_report),
         ("Summary Report", test_summary_report),
         ("Statistics", test_statistics),
+        # Dashboard API
+        ("Dashboard Overview", test_dashboard_overview),
+        ("Dashboard KPIs", test_dashboard_kpis),
+        ("Signal Detection", test_signal_detection),
+        ("Signal History", test_signal_history),
+        ("Trend Metrics", test_trend_metrics),
+        ("Create Complaint", test_create_complaint),
+        ("Get Complaints", test_get_complaints),
+        ("Complaints Analytics", test_complaints_analytics),
+        ("Real-time Performance", test_realtime_performance),
+        ("SLA Status", test_sla_status),
+        ("Compliance Status", test_compliance_status),
+        ("Generate Report", test_generate_report),
+        ("Get Reports", test_get_reports),
     ]
 
     results = []
