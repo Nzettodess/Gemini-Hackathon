@@ -1,0 +1,122 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname', 'risk_id', 'severity']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 12h
+  receiver: 'eu-ai-act-default'
+  routes:
+    - match:
+        severity: critical
+        risk_id: safety-001
+      receiver: 'critical-safety-001'
+      continue: true
+      group_wait: 0s
+      repeat_interval: 1h
+    
+    - match:
+        severity: critical
+        risk_id: safety-002
+      receiver: 'critical-safety-002'
+      continue: true
+      group_wait: 0s
+      repeat_interval: 30m
+    
+    - match:
+        severity: high
+        risk_id: safety-003
+      receiver: 'high-safety-003'
+      continue: true
+      repeat_interval: 4h
+    
+    - match:
+        severity: high
+        risk_id: safety-005
+      receiver: 'high-safety-005'
+      continue: true
+      repeat_interval: 4h
+
+receivers:
+  - name: 'eu-ai-act-default'
+    email_configs:
+      - to: 'ai-compliance-team@example.com'
+        from: 'alerts@example.com'
+        smarthost: 'smtp.example.com:587'
+        auth_username: 'alerts@example.com'
+        auth_password: 'password'
+        headers:
+          Subject: '[EU AI Act Alert] {{ .GroupLabels.alertname }}'
+    webhook_configs:
+      - url: 'http://localhost:8002/api/alerts/webhook'
+        send_resolved: true
+
+  - name: 'critical-safety-001'
+    email_configs:
+      - to: 'emergency@example.com,legal@example.com'
+        from: 'critical-alerts@example.com'
+        smarthost: 'smtp.example.com:587'
+        headers:
+          Subject: '[CRITICAL] Death/Serious Harm - Article 73(4) - 10 Day Deadline'
+          Priority: 'urgent'
+    pagerduty_configs:
+      - service_key: 'YOUR_PAGERDUTY_SERVICE_KEY'
+        severity: 'critical'
+        description: 'EU AI Act Article 3(49)(a) - Death or serious harm detected'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#ai-safety-critical'
+        title: 'CRITICAL: safety-001 Alert'
+        text: 'Death or serious harm to health detected. Reporting deadline: 10 days (Article 73(4))'
+
+  - name: 'critical-safety-002'
+    email_configs:
+      - to: 'emergency@example.com,infrastructure@example.com'
+        from: 'critical-alerts@example.com'
+        smarthost: 'smtp.example.com:587'
+        headers:
+          Subject: '[CRITICAL] Infrastructure Disruption - Article 73(3) - 2 Day Deadline'
+          Priority: 'urgent'
+    pagerduty_configs:
+      - service_key: 'YOUR_PAGERDUTY_SERVICE_KEY'
+        severity: 'critical'
+        description: 'EU AI Act Article 3(49)(b) - Critical infrastructure disruption'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#ai-safety-critical'
+        title: 'CRITICAL: safety-002 Alert'
+        text: 'Critical infrastructure disruption detected. Reporting deadline: 2 days (Article 73(3))'
+
+  - name: 'high-safety-003'
+    email_configs:
+      - to: 'compliance@example.com,legal@example.com'
+        from: 'alerts@example.com'
+        smarthost: 'smtp.example.com:587'
+        headers:
+          Subject: '[HIGH] Fundamental Rights Violation - Article 73(2) - 15 Day Deadline'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#ai-compliance'
+        title: 'HIGH: safety-003 Alert'
+        text: 'Fundamental rights violation detected. Reporting deadline: 15 days (Article 73(2))'
+
+  - name: 'high-safety-005'
+    email_configs:
+      - to: 'compliance@example.com,operations@example.com'
+        from: 'alerts@example.com'
+        smarthost: 'smtp.example.com:587'
+        headers:
+          Subject: '[HIGH] Property/Environmental Harm - Article 73(2) - 15 Day Deadline'
+    slack_configs:
+      - api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
+        channel: '#ai-compliance'
+        title: 'HIGH: safety-005 Alert'
+        text: 'Serious harm to property/environment detected. Reporting deadline: 15 days (Article 73(2))'
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'high'
+    equal: ['alertname', 'ai_system']

@@ -1,0 +1,124 @@
+{
+  "change_id": "CHG-20260122232204-da0bd3",
+  "title": "Security Patch: Update Authentication Library",
+  "description": "Critical security update for OAuth2 library",
+  "change_type": "security_patch",
+  "priority": "critical",
+  "status": "deployed",
+  "requester": "demo-user@company.com",
+  "created_at": "2026-01-22T23:22:04.112539",
+  "updated_at": "2026-01-22T23:22:04.171222",
+  "target_deployment_date": "2026-02-15",
+  "affected_systems": [
+    "auth-service",
+    "api-gateway"
+  ],
+  "business_justification": "Address CVE-2026-1234 vulnerability",
+  "technical_details": "Update oauth2-lib from v3.2 to v3.3.1",
+  "impact_assessment": {
+    "risk_level": "critical",
+    "affected_components": [
+      "auth-service",
+      "api-gateway"
+    ],
+    "affected_users": "Requires manual assessment",
+    "performance_impact": "Requires manual assessment",
+    "compliance_impact": "Requires manual review per Article 17 and 43",
+    "rollback_complexity": "moderate",
+    "testing_requirements": [
+      "Unit tests",
+      "Integration tests",
+      "Regression tests"
+    ],
+    "dependencies": [],
+    "ai_analysis": "Manual assessment - AI analysis unavailable",
+    "confidence_score": 0.5,
+    "timestamp": "2026-01-22T23:22:04.116616"
+  },
+  "test_results": [
+    {
+      "test_id": "TEST-CHG-20260122232204-da0bd3-unit-20260122232204",
+      "test_name": "Unit Test Suite",
+      "test_type": "unit",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 11.832678062758992,
+      "details": "Executed Unit Test Suite for change CHG-20260122232204-da0bd3. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.129208",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-da0bd3-unit-20260122232204_report.json"
+      ]
+    },
+    {
+      "test_id": "TEST-CHG-20260122232204-da0bd3-integration-20260122232204",
+      "test_name": "Integration Test Suite",
+      "test_type": "integration",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 55.04519264843387,
+      "details": "Executed Integration Test Suite for change CHG-20260122232204-da0bd3. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.130225",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-da0bd3-integration-20260122232204_report.json"
+      ]
+    },
+    {
+      "test_id": "TEST-CHG-20260122232204-da0bd3-regression-20260122232204",
+      "test_name": "Regression Test Suite",
+      "test_type": "regression",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 84.24595117469227,
+      "details": "Executed Regression Test Suite for change CHG-20260122232204-da0bd3. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.130833",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-da0bd3-regression-20260122232204_report.json"
+      ]
+    }
+  ],
+  "approvals": [
+    {
+      "approver": "security-team@company.com",
+      "requested_at": "2026-01-22T23:22:04.146070",
+      "status": "approved",
+      "notes": "Security impact assessment",
+      "approved_at": "2026-01-22T23:22:04.148720",
+      "decision_notes": "Approved - Security impact assessment complete"
+    }
+  ],
+  "rollback_plan": {
+    "change_id": "CHG-20260122232204-da0bd3",
+    "created_at": "2026-01-22T23:22:04.122350",
+    "rollback_steps": [
+      "Identify components to rollback",
+      "Create backup of current state",
+      "Restore previous version",
+      "Verify system health",
+      "Run validation tests"
+    ],
+    "backup_locations": [
+      "change_management/backups/backup_CHG-20260122232204-da0bd3_20260122_232204.json"
+    ],
+    "verification_steps": [
+      "Check system health endpoints",
+      "Verify critical functionality",
+      "Monitor error rates",
+      "Validate performance metrics",
+      "Confirm compliance status"
+    ],
+    "estimated_duration_minutes": 30,
+    "automated": true
+  },
+  "deployment_log": [
+    {
+      "deployed_by": "ops-team@company.com",
+      "started_at": "2026-01-22T23:22:04.166032",
+      "completed_at": "2026-01-22T23:22:04.170424",
+      "status": "completed",
+      "steps_completed": [],
+      "errors": [],
+      "notes": "Deployment successful. All health checks passed."
+    }
+  ],
+  "metadata": {}
+}

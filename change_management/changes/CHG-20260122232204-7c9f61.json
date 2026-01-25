@@ -1,0 +1,154 @@
+{
+  "change_id": "CHG-20260122232204-7c9f61",
+  "title": "Update AI Risk Classification Model to v2.1",
+  "description": "Deploy improved risk classification model with 5% accuracy increase",
+  "change_type": "model_update",
+  "priority": "high",
+  "status": "rolled_back",
+  "requester": "demo-user@company.com",
+  "created_at": "2026-01-22T23:22:04.111389",
+  "updated_at": "2026-01-22T23:22:04.174570",
+  "target_deployment_date": "2026-02-15",
+  "affected_systems": [
+    "risk-classifier",
+    "api-gateway",
+    "monitoring"
+  ],
+  "business_justification": "Improve accuracy and reduce false positives per Article 17",
+  "technical_details": "New attention mechanism, trained on 2M samples",
+  "impact_assessment": {
+    "risk_level": "high",
+    "affected_components": [
+      "risk-classifier",
+      "api-gateway",
+      "monitoring"
+    ],
+    "affected_users": "Requires manual assessment",
+    "performance_impact": "Requires manual assessment",
+    "compliance_impact": "Requires manual review per Article 17 and 43",
+    "rollback_complexity": "moderate",
+    "testing_requirements": [
+      "Unit tests",
+      "Integration tests",
+      "Regression tests"
+    ],
+    "dependencies": [],
+    "ai_analysis": "Manual assessment - AI analysis unavailable",
+    "confidence_score": 0.5,
+    "timestamp": "2026-01-22T23:22:04.114572"
+  },
+  "test_results": [
+    {
+      "test_id": "TEST-CHG-20260122232204-7c9f61-unit-20260122232204",
+      "test_name": "Unit Test Suite",
+      "test_type": "unit",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 12.108817772381622,
+      "details": "Executed Unit Test Suite for change CHG-20260122232204-7c9f61. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.125238",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-7c9f61-unit-20260122232204_report.json"
+      ]
+    },
+    {
+      "test_id": "TEST-CHG-20260122232204-7c9f61-smoke-20260122232204",
+      "test_name": "Smoke Test Suite",
+      "test_type": "smoke",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 3.7235771407967655,
+      "details": "Executed Smoke Test Suite for change CHG-20260122232204-7c9f61. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.126212",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-7c9f61-smoke-20260122232204_report.json"
+      ]
+    }
+  ],
+  "approvals": [
+    {
+      "approver": "compliance-officer@company.com",
+      "requested_at": "2026-01-22T23:22:04.140947",
+      "status": "approved",
+      "notes": "Article 17 compliance review",
+      "approved_at": "2026-01-22T23:22:04.143693",
+      "decision_notes": "Approved - Article 17 compliance review complete"
+    }
+  ],
+  "rollback_plan": {
+    "change_id": "CHG-20260122232204-7c9f61",
+    "created_at": "2026-01-22T23:22:04.120987",
+    "rollback_steps": [
+      "Stop current model serving",
+      "Restore previous model version from backup",
+      "Verify model integrity",
+      "Restart model serving",
+      "Run smoke tests",
+      "Monitor performance metrics"
+    ],
+    "backup_locations": [
+      "change_management/backups/backup_CHG-20260122232204-7c9f61_20260122_232204.json"
+    ],
+    "verification_steps": [
+      "Check system health endpoints",
+      "Verify critical functionality",
+      "Monitor error rates",
+      "Validate performance metrics",
+      "Confirm compliance status"
+    ],
+    "estimated_duration_minutes": 15,
+    "automated": true
+  },
+  "deployment_log": [
+    {
+      "deployed_by": "ops-team@company.com",
+      "started_at": "2026-01-22T23:22:04.161775",
+      "completed_at": "2026-01-22T23:22:04.164453",
+      "status": "completed",
+      "steps_completed": [],
+      "errors": [],
+      "notes": "Deployment successful. All health checks passed."
+    }
+  ],
+  "metadata": {
+    "rollback_execution": {
+      "rolled_back_by": "ops-team@company.com",
+      "reason": "Performance degradation: 95th percentile latency increased by 200ms",
+      "started_at": "2026-01-22T23:22:04.174529",
+      "completed_at": "2026-01-22T23:22:04.174560",
+      "steps_completed": [
+        {
+          "step": "Stop current model serving",
+          "completed_at": "2026-01-22T23:22:04.174543",
+          "status": "completed"
+        },
+        {
+          "step": "Restore previous model version from backup",
+          "completed_at": "2026-01-22T23:22:04.174547",
+          "status": "completed"
+        },
+        {
+          "step": "Verify model integrity",
+          "completed_at": "2026-01-22T23:22:04.174550",
+          "status": "completed"
+        },
+        {
+          "step": "Restart model serving",
+          "completed_at": "2026-01-22T23:22:04.174552",
+          "status": "completed"
+        },
+        {
+          "step": "Run smoke tests",
+          "completed_at": "2026-01-22T23:22:04.174555",
+          "status": "completed"
+        },
+        {
+          "step": "Monitor performance metrics",
+          "completed_at": "2026-01-22T23:22:04.174557",
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    }
+  }
+}

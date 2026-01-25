@@ -1,0 +1,140 @@
+{
+  "change_id": "CHG-20260122232204-5d5855",
+  "title": "Add Explainability Dashboard Feature",
+  "description": "New dashboard for AI decision explanations per Article 13",
+  "change_type": "feature_addition",
+  "priority": "medium",
+  "status": "rejected",
+  "requester": "demo-user@company.com",
+  "created_at": "2026-01-22T23:22:04.113462",
+  "updated_at": "2026-01-22T23:22:04.157769",
+  "target_deployment_date": "2026-02-15",
+  "affected_systems": [
+    "frontend",
+    "explainability-service"
+  ],
+  "business_justification": "EU AI Act Article 13 transparency requirements",
+  "technical_details": "React dashboard with SHAP value visualizations",
+  "impact_assessment": {
+    "risk_level": "medium",
+    "affected_components": [
+      "frontend",
+      "explainability-service"
+    ],
+    "affected_users": "Requires manual assessment",
+    "performance_impact": "Requires manual assessment",
+    "compliance_impact": "Requires manual review per Article 17 and 43",
+    "rollback_complexity": "moderate",
+    "testing_requirements": [
+      "Unit tests",
+      "Integration tests",
+      "Regression tests"
+    ],
+    "dependencies": [],
+    "ai_analysis": "Manual assessment - AI analysis unavailable",
+    "confidence_score": 0.5,
+    "timestamp": "2026-01-22T23:22:04.118597"
+  },
+  "test_results": [
+    {
+      "test_id": "TEST-CHG-20260122232204-5d5855-unit-20260122232204",
+      "test_name": "Unit Test Suite",
+      "test_type": "unit",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 10.790349843408976,
+      "details": "Executed Unit Test Suite for change CHG-20260122232204-5d5855. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.133376",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-5d5855-unit-20260122232204_report.json"
+      ]
+    },
+    {
+      "test_id": "TEST-CHG-20260122232204-5d5855-integration-20260122232204",
+      "test_name": "Integration Test Suite",
+      "test_type": "integration",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 58.998323531820006,
+      "details": "Executed Integration Test Suite for change CHG-20260122232204-5d5855. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.134420",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-5d5855-integration-20260122232204_report.json"
+      ]
+    },
+    {
+      "test_id": "TEST-CHG-20260122232204-5d5855-regression-20260122232204",
+      "test_name": "Regression Test Suite",
+      "test_type": "regression",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 81.44035623025616,
+      "details": "Executed Regression Test Suite for change CHG-20260122232204-5d5855. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.135061",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-5d5855-regression-20260122232204_report.json"
+      ]
+    },
+    {
+      "test_id": "TEST-CHG-20260122232204-5d5855-performance-20260122232204",
+      "test_name": "Performance Test Suite",
+      "test_type": "performance",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 119.69056312295064,
+      "details": "Executed Performance Test Suite for change CHG-20260122232204-5d5855. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.135635",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-5d5855-performance-20260122232204_report.json"
+      ]
+    },
+    {
+      "test_id": "TEST-CHG-20260122232204-5d5855-security-20260122232204",
+      "test_name": "Security Test Suite",
+      "test_type": "security",
+      "status": "passed",
+      "passed": true,
+      "duration_seconds": 40.52021628636231,
+      "details": "Executed Security Test Suite for change CHG-20260122232204-5d5855. All checks passed.",
+      "timestamp": "2026-01-22T23:22:04.136099",
+      "artifacts": [
+        "change_management/test_results/TEST-CHG-20260122232204-5d5855-security-20260122232204_report.json"
+      ]
+    }
+  ],
+  "approvals": [
+    {
+      "approver": "tech-lead@company.com",
+      "requested_at": "2026-01-22T23:22:04.155993",
+      "status": "rejected",
+      "notes": "Technical review",
+      "approved_at": "2026-01-22T23:22:04.157751",
+      "decision_notes": "Requires additional security testing"
+    }
+  ],
+  "rollback_plan": {
+    "change_id": "CHG-20260122232204-5d5855",
+    "created_at": "2026-01-22T23:22:04.123896",
+    "rollback_steps": [
+      "Identify components to rollback",
+      "Create backup of current state",
+      "Restore previous version",
+      "Verify system health",
+      "Run validation tests"
+    ],
+    "backup_locations": [
+      "change_management/backups/backup_CHG-20260122232204-5d5855_20260122_232204.json"
+    ],
+    "verification_steps": [
+      "Check system health endpoints",
+      "Verify critical functionality",
+      "Monitor error rates",
+      "Validate performance metrics",
+      "Confirm compliance status"
+    ],
+    "estimated_duration_minutes": 30,
+    "automated": true
+  },
+  "deployment_log": [],
+  "metadata": {}
+}

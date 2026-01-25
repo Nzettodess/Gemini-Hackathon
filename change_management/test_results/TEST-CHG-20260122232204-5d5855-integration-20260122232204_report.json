@@ -1,0 +1,13 @@
+{
+  "test_id": "TEST-CHG-20260122232204-5d5855-integration-20260122232204",
+  "test_name": "Integration Test Suite",
+  "test_type": "integration",
+  "status": "passed",
+  "passed": true,
+  "duration_seconds": 58.998323531820006,
+  "details": "Executed Integration Test Suite for change CHG-20260122232204-5d5855. All checks passed.",
+  "timestamp": "2026-01-22T23:22:04.134420",
+  "artifacts": [
+    "change_management/test_results/TEST-CHG-20260122232204-5d5855-integration-20260122232204_report.json"
+  ]
+}

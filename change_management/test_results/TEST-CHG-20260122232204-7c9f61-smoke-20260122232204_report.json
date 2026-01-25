@@ -1,0 +1,13 @@
+{
+  "test_id": "TEST-CHG-20260122232204-7c9f61-smoke-20260122232204",
+  "test_name": "Smoke Test Suite",
+  "test_type": "smoke",
+  "status": "passed",
+  "passed": true,
+  "duration_seconds": 3.7235771407967655,
+  "details": "Executed Smoke Test Suite for change CHG-20260122232204-7c9f61. All checks passed.",
+  "timestamp": "2026-01-22T23:22:04.126212",
+  "artifacts": [
+    "change_management/test_results/TEST-CHG-20260122232204-7c9f61-smoke-20260122232204_report.json"
+  ]
+}

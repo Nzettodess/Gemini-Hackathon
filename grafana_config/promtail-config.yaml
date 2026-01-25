@@ -1,0 +1,47 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: ai_system_logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: ai_system_logs
+          compliance: eu_ai_act
+          __path__: /var/log/ai_systems/*.log
+    pipeline_stages:
+      - match:
+          selector: '{job="ai_system_logs"}'
+          stages:
+            - regex:
+                expression: '(?P<timestamp>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}) (?P<level>\w+) (?P<message>.*)'
+            - labels:
+                level:
+            - timestamp:
+                source: timestamp
+                format: RFC3339
+
+  - job_name: incident_logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: incident_management
+          article: '73'
+          __path__: /var/log/incidents/*.log
+    pipeline_stages:
+      - match:
+          selector: '{job="incident_management"} |~ "serious incident|Article 73"'
+          stages:
+            - regex:
+                expression: 'risk_id=(?P<risk_id>safety-\d{3})'
+            - labels:
+                risk_id:
