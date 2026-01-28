@@ -414,12 +414,14 @@ class ChangeManagementDemo:
                     "rejected": "red"
                 }.get(approval["status"], "white")
                 
+                decision_text = approval.get("decision_notes") or approval.get("notes") or ""
+                decision_display = (decision_text[:40] + "...") if decision_text else "N/A"
+                
                 table.add_row(
                     change_id[-12:],
                     approval["approver"].split("@")[0],
                     f"[{status_color}]{approval['status'].upper()}[/{status_color}]",
-                    (approval.get("decision_notes", approval.get("notes", ""))[:40] + "...")
-                    if approval.get("decision_notes") or approval.get("notes") else "N/A"
+                    decision_display
                 )
         
         console.print(table)
