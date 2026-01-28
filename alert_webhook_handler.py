@@ -10,9 +10,13 @@ from typing import Dict, Any
 import json
 from rich.console import Console
 
+from security_input import InMemoryRateLimiter, InputValidationError, validate_grafana_alert_payload
+
 console = Console()
 
 app = Flask(__name__)
+
+rate_limiter = InMemoryRateLimiter()
 
 
 class AlertWebhookHandler:
@@ -157,14 +161,23 @@ def handle_webhook():
     """Webhook endpoint for Grafana alerts"""
     
     try:
-        alert_data = request.get_json()
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr or "unknown").split(",")[0].strip()
+        if not rate_limiter.allow(f"grafana_webhook:{client_ip}"):
+            return jsonify({'error': 'Rate limit exceeded'}), 429
+
+        alert_data = request.get_json(silent=True)
         
         if not alert_data:
             return jsonify({'error': 'No data received'}), 400
+
+        alert_data, _ = validate_grafana_alert_payload(alert_data)
         
         result = webhook_handler.process_alert(alert_data)
         
         return jsonify(result), 200
+
+    except InputValidationError as e:
+        return jsonify({'error': str(e)}), 400
         
     except Exception as e:
         console.print(f"[red]Webhook error: {e}[/red]")
